@@ -16,13 +16,15 @@ public class Node : MonoBehaviour
     public Node exploredFrom;
     [SerializeField] bool isInPath;
     public bool isLink;
-    public float linkDestinationElevation;
+    //public float linkDestinationElevation;
     [SerializeField] List<Vector3> linkedNeighbourCoords = new List<Vector3>();
+    MeshRenderer tileOverlay;
 
     public bool isWalkable;
+    bool isVisibleByUnit;
 
 
-    
+
     [Header("A* Relevant stuff")]
     public int gCost; //distance to target.
     public int hCost;//distance from start.
@@ -63,15 +65,21 @@ public class Node : MonoBehaviour
     {
         string labelText = "[" + transform.position.x + "," + transform.position.y + "," + transform.position.z + "]";
         gameObject.name = "Node:" + labelText;
+        tileOverlay = transform.Find("TileOverlay").GetComponent<MeshRenderer>();
         
-        Destroy(transform.Find("Label").gameObject);
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetDetectionLevel(bool state)
     {
-        
+        isVisibleByUnit = state;
+        tileOverlay.enabled = state;
     }
+    public bool GetDetectionLevel()
+    {
+        return isVisibleByUnit;
+    }
+    
 
     /*
     private void OnDrawGizmos()

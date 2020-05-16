@@ -74,14 +74,17 @@ public class PathRequester : MonoBehaviour
 
     List<Vector3> CleanUpPath(List<Node> rawPath) // TAKES IN REQUESTED PATH FROM PATHFINDER. EVALUATES FOR ELEVATION...AND ANYTHING ELSE, AND PLOTS ALL POINTS BEFORE COMMITTING THE MOVE TO THE NAV AGENT.
     {
+   
         //CONVERT PATH TO VECTOR LIST, instead of nodes
-        
+
         List<Vector3> cleanPath = ConvertPathListType(rawPath);
         bridgePositions = new Dictionary<int, Vector3>();
 
         //identify new positions first. then add them. 
         for (int i = 0; i < cleanPath.Count; i++)
         {
+            
+            
             if (i + 1 < cleanPath.Count)
             {
                 Vector3 currentPos = cleanPath[i];

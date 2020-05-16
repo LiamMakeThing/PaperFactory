@@ -120,6 +120,131 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15203401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15203402}
+  - component: {fileID: 15203406}
+  - component: {fileID: 15203405}
+  - component: {fileID: 15203404}
+  - component: {fileID: 15203403}
+  - component: {fileID: 15203407}
+  m_Layer: 9
+  m_Name: SM_Layout_Block_2x2 (17)
+  m_TagString: Walkable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15203402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.5, y: 1, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403304986173426454}
+  m_RootOrder: 79
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &15203403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &15203404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332359193b1787b4e9fddfe949c96188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &15203405
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -1360991219368177298, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &15203406
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_Mesh: {fileID: -3733908430354458961, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+--- !u!114 &15203407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15203401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &101329404
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124478049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130154201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1012273574}
@@ -300,6 +425,7 @@ GameObject:
   - component: {fileID: 195055752}
   - component: {fileID: 195055751}
   - component: {fileID: 195055750}
+  - component: {fileID: 195055754}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (19)
   m_TagString: Walkable
@@ -392,6 +518,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195055748}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &195055754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195055748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &199088249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,6 +997,7 @@ GameObject:
   - component: {fileID: 249880690}
   - component: {fileID: 249880689}
   - component: {fileID: 249880688}
+  - component: {fileID: 249880692}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (16)
   m_TagString: Untagged
@@ -944,6 +1090,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249880686}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &249880692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249880686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &274374519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1446,7 @@ GameObject:
   - component: {fileID: 489494136}
   - component: {fileID: 489494135}
   - component: {fileID: 489494134}
+  - component: {fileID: 489494138}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (14)
   m_TagString: Walkable
@@ -1373,6 +1539,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489494132}
   m_Mesh: {fileID: -1549156703094572022, guid: 3899f2920890b894e98b2e850fa0b40c, type: 3}
+--- !u!114 &489494138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489494132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &496003709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2525,6 +2710,7 @@ GameObject:
   - component: {fileID: 1039389931}
   - component: {fileID: 1039389930}
   - component: {fileID: 1039389929}
+  - component: {fileID: 1039389933}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (12)
   m_TagString: Walkable
@@ -2617,6 +2803,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039389927}
   m_Mesh: {fileID: -1549156703094572022, guid: 3899f2920890b894e98b2e850fa0b40c, type: 3}
+--- !u!114 &1039389933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039389927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &1056955250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2899,6 +3104,7 @@ GameObject:
   - component: {fileID: 1122325899}
   - component: {fileID: 1122325898}
   - component: {fileID: 1122325897}
+  - component: {fileID: 1122325901}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (20)
   m_TagString: Walkable
@@ -2991,6 +3197,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122325895}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &1122325901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122325895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &1226385921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3079,6 +3304,7 @@ GameObject:
   - component: {fileID: 1228951371}
   - component: {fileID: 1228951370}
   - component: {fileID: 1228951369}
+  - component: {fileID: 1228951373}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (18)
   m_TagString: Walkable
@@ -3171,6 +3397,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228951367}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &1228951373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228951367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &1324261727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,6 +3429,7 @@ GameObject:
   - component: {fileID: 1324261731}
   - component: {fileID: 1324261730}
   - component: {fileID: 1324261729}
+  - component: {fileID: 1324261733}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (15)
   m_TagString: Walkable
@@ -3276,6 +3522,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324261727}
   m_Mesh: {fileID: -3733908430354458961, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+--- !u!114 &1324261733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324261727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &1387390336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,6 +3628,7 @@ GameObject:
   - component: {fileID: 1397435912}
   - component: {fileID: 1397435911}
   - component: {fileID: 1397435910}
+  - component: {fileID: 1397435914}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (13)
   m_TagString: Walkable
@@ -3455,6 +3721,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397435908}
   m_Mesh: {fileID: -1549156703094572022, guid: 3899f2920890b894e98b2e850fa0b40c, type: 3}
+--- !u!114 &1397435914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397435908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &1410549039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4077,6 +4362,131 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1701049329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1732694624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732694625}
+  - component: {fileID: 1732694629}
+  - component: {fileID: 1732694628}
+  - component: {fileID: 1732694627}
+  - component: {fileID: 1732694626}
+  - component: {fileID: 1732694630}
+  m_Layer: 9
+  m_Name: SM_Layout_Block_2x2 (18)
+  m_TagString: Walkable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1732694625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 1, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 403304986173426454}
+  m_RootOrder: 80
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1732694626
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1732694627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332359193b1787b4e9fddfe949c96188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &1732694628
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -1360991219368177298, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1732694629
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_Mesh: {fileID: -3733908430354458961, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+--- !u!114 &1732694630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732694624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1001 &1754889464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4389,6 +4799,7 @@ GameObject:
   - component: {fileID: 1793622649}
   - component: {fileID: 1793622648}
   - component: {fileID: 1793622647}
+  - component: {fileID: 1793622651}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (17)
   m_TagString: Walkable
@@ -4481,6 +4892,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793622645}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &1793622651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793622645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &1817988773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,6 +4998,7 @@ GameObject:
   - component: {fileID: 1838641033}
   - component: {fileID: 1838641032}
   - component: {fileID: 1838641031}
+  - component: {fileID: 1838641035}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (11)
   m_TagString: Walkable
@@ -4660,6 +5091,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838641029}
   m_Mesh: {fileID: -1549156703094572022, guid: 3899f2920890b894e98b2e850fa0b40c, type: 3}
+--- !u!114 &1838641035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838641029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &1852102566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,30 +6628,30 @@ MonoBehaviour:
   - {x: 4, y: 0, z: 1}
   - {x: 4, y: 3, z: 4}
   - {x: 4, y: 3, z: 6}
-  - {x: 5, y: 0, z: -2}
-  - {x: 5, y: 0, z: -1}
+  - {x: 5, y: 2, z: -2}
+  - {x: 5, y: 2, z: -1}
   - {x: 5, y: 0, z: 1}
   - {x: 5, y: 0, z: 2}
   - {x: 5, y: 1, z: 3}
   - {x: 5, y: 3, z: 4}
   - {x: 5, y: 3, z: 5}
   - {x: 5, y: 3, z: 6}
-  - {x: 6, y: 0, z: -2}
-  - {x: 6, y: 0, z: -1}
+  - {x: 6, y: 2, z: -2}
+  - {x: 6, y: 2, z: -1}
   - {x: 6, y: 0, z: 1}
   - {x: 6, y: 0, z: 2}
   - {x: 6, y: 1, z: 3}
   - {x: 6, y: 3, z: 4}
   - {x: 6, y: 3, z: 5}
-  - {x: 7, y: 0, z: -2}
-  - {x: 7, y: 0, z: -1}
+  - {x: 7, y: 2, z: -2}
+  - {x: 7, y: 2, z: -1}
   - {x: 7, y: 0, z: 1}
   - {x: 7, y: 0, z: 2}
   - {x: 7, y: 1, z: 3}
   - {x: 7, y: 1, z: 4}
   - {x: 7, y: 2, z: 5}
-  - {x: 8, y: 0, z: -2}
-  - {x: 8, y: 0, z: -1}
+  - {x: 8, y: 2, z: -2}
+  - {x: 8, y: 2, z: -1}
   - {x: 8, y: 0, z: 0}
   - {x: 8, y: 0, z: 1}
   - {x: 8, y: 0, z: 2}
@@ -6342,6 +6792,7 @@ GameObject:
   - component: {fileID: 1931242799}
   - component: {fileID: 1931242798}
   - component: {fileID: 1931242797}
+  - component: {fileID: 1931242801}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (16)
   m_TagString: Walkable
@@ -6434,6 +6885,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931242795}
   m_Mesh: {fileID: -3733908430354458961, guid: f1e2308c4ca72f74ba4e07e0c122a59d, type: 3}
+--- !u!114 &1931242801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931242795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &1995849854
 GameObject:
   m_ObjectHideFlags: 0
@@ -6447,6 +6917,7 @@ GameObject:
   - component: {fileID: 1995849858}
   - component: {fileID: 1995849857}
   - component: {fileID: 1995849856}
+  - component: {fileID: 1995849860}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (21)
   m_TagString: Walkable
@@ -6539,6 +7010,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995849854}
   m_Mesh: {fileID: -418005765085795592, guid: f9e378c03905e8d428433318190bf42a, type: 3}
+--- !u!114 &1995849860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995849854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &2047958693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,6 +7038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047958695}
+  - component: {fileID: 2047958697}
   - component: {fileID: 2047958694}
   - component: {fileID: 2047958696}
   m_Layer: 0
@@ -6570,13 +7061,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 18.53
-  viewAngle: 34
+  viewAngle: 68
+  nodeDetectOffset: {x: 0, y: 0.125, z: 0}
+  targetsInViewRadius: []
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   visibleTargets: []
 --- !u!4 &2047958695
 Transform:
@@ -6586,7 +7079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047958693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: -10}
+  m_LocalPosition: {x: -2, y: 1, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6604,6 +7097,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332359193b1787b4e9fddfe949c96188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2047958697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047958693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14562b7f1041d3546908d3ca7161d6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRot: 90
+  speed: 0.1
 --- !u!1 &2070386945
 GameObject:
   m_ObjectHideFlags: 0
@@ -6827,6 +7334,8 @@ Transform:
   - {fileID: 1931242796}
   - {fileID: 1122325896}
   - {fileID: 1995849855}
+  - {fileID: 15203402}
+  - {fileID: 1732694625}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6859,6 +7368,7 @@ GameObject:
   - component: {fileID: 2134993598370788806}
   - component: {fileID: 7559301726866330955}
   - component: {fileID: 404711886396686619}
+  - component: {fileID: 404711886396686620}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (1)
   m_TagString: Walkable
@@ -6879,6 +7389,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886396686620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886396686618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711886413316369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,6 +7421,7 @@ GameObject:
   - component: {fileID: 2134993598420710861}
   - component: {fileID: 7559301726815884608}
   - component: {fileID: 404711886413316370}
+  - component: {fileID: 404711886413316371}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (7)
   m_TagString: Walkable
@@ -6912,6 +7442,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886413316371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886413316369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711886532648654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6925,6 +7474,7 @@ GameObject:
   - component: {fileID: 2134993598506740242}
   - component: {fileID: 7559301727002348191}
   - component: {fileID: 404711886532648655}
+  - component: {fileID: 404711886532648656}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (4)
   m_TagString: Walkable
@@ -6945,6 +7495,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886532648656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886532648654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711886548167739
 GameObject:
   m_ObjectHideFlags: 0
@@ -6958,6 +7527,7 @@ GameObject:
   - component: {fileID: 2134993598553708775}
   - component: {fileID: 7559301726948571242}
   - component: {fileID: 404711886548167740}
+  - component: {fileID: 404711886548167741}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (14)
   m_TagString: Walkable
@@ -6978,6 +7548,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886548167741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886548167739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711886667905764
 GameObject:
   m_ObjectHideFlags: 0
@@ -6991,6 +7580,7 @@ GameObject:
   - component: {fileID: 2134993598102752824}
   - component: {fileID: 7559301727135411893}
   - component: {fileID: 404711886667905765}
+  - component: {fileID: 404711886667905766}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (15)
   m_TagString: Walkable
@@ -7011,6 +7601,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886667905766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886667905764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711886764496811
 GameObject:
   m_ObjectHideFlags: 0
@@ -7024,6 +7633,7 @@ GameObject:
   - component: {fileID: 2134993598082179959}
   - component: {fileID: 7559301727139726330}
   - component: {fileID: 404711886764496812}
+  - component: {fileID: 404711886764496813}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (9)
   m_TagString: Walkable
@@ -7044,6 +7654,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711886764496813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711886764496811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711887101339293
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,6 +7686,7 @@ GameObject:
   - component: {fileID: 2134993598001680961}
   - component: {fileID: 7559301726430130892}
   - component: {fileID: 404711887101339294}
+  - component: {fileID: 404711887101339295}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (13)
   m_TagString: Walkable
@@ -7077,6 +7707,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711887101339295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711887101339293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711887271098205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7090,6 +7739,7 @@ GameObject:
   - component: {fileID: 2134993597500081025}
   - component: {fileID: 7559301726666957580}
   - component: {fileID: 404711887271098206}
+  - component: {fileID: 404711887271098207}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (2)
   m_TagString: Walkable
@@ -7110,6 +7760,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711887271098207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711887271098205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711887873873508
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,6 +7792,7 @@ GameObject:
   - component: {fileID: 2134993599308997304}
   - component: {fileID: 7559301728341410357}
   - component: {fileID: 404711887873873509}
+  - component: {fileID: 404711887873873510}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (12)
   m_TagString: Walkable
@@ -7143,6 +7813,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711887873873510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711887873873508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711887889912632
 GameObject:
   m_ObjectHideFlags: 0
@@ -7156,6 +7845,7 @@ GameObject:
   - component: {fileID: 2134993599360428004}
   - component: {fileID: 7559301728292472681}
   - component: {fileID: 404711887889912633}
+  - component: {fileID: 404711887889912634}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (5)
   m_TagString: Walkable
@@ -7176,6 +7866,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711887889912634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711887889912632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711887948512941
 GameObject:
   m_ObjectHideFlags: 0
@@ -7189,6 +7898,7 @@ GameObject:
   - component: {fileID: 2134993599234722417}
   - component: {fileID: 7559301728401402620}
   - component: {fileID: 404711887948512942}
+  - component: {fileID: 404711887948512943}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (8)
   m_TagString: Walkable
@@ -7209,6 +7919,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711887948512943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711887948512941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711888183528529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,6 +7951,7 @@ GameObject:
   - component: {fileID: 2134993599066847373}
   - component: {fileID: 7559301727495542784}
   - component: {fileID: 404711888183528530}
+  - component: {fileID: 404711888183528531}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (3)
   m_TagString: Walkable
@@ -7242,6 +7972,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711888183528531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711888183528529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711888270485095
 GameObject:
   m_ObjectHideFlags: 0
@@ -7255,6 +8004,7 @@ GameObject:
   - component: {fileID: 2134993598648636091}
   - component: {fileID: 7559301727647543862}
   - component: {fileID: 404711888270485096}
+  - component: {fileID: 404711888270485097}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (10)
   m_TagString: Walkable
@@ -7275,6 +8025,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711888270485097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711888270485095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711888340031804
 GameObject:
   m_ObjectHideFlags: 0
@@ -7288,6 +8057,7 @@ GameObject:
   - component: {fileID: 2134993598585810400}
   - component: {fileID: 7559301727710760301}
   - component: {fileID: 404711888340031805}
+  - component: {fileID: 404711888340031806}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (6)
   m_TagString: Walkable
@@ -7308,6 +8078,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711888340031806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711888340031804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &404711888358744786
 GameObject:
   m_ObjectHideFlags: 0
@@ -7321,6 +8110,7 @@ GameObject:
   - component: {fileID: 2134993598621554190}
   - component: {fileID: 7559301727687603843}
   - component: {fileID: 404711888358744787}
+  - component: {fileID: 404711888358744788}
   m_Layer: 9
   m_Name: SM_Layout_Block_M (11)
   m_TagString: Walkable
@@ -7341,6 +8131,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &404711888358744788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404711888358744786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748184729260
 GameObject:
   m_ObjectHideFlags: 0
@@ -7354,6 +8163,7 @@ GameObject:
   - component: {fileID: 1191315252996358768}
   - component: {fileID: 1999162383662271993}
   - component: {fileID: 627320748184729261}
+  - component: {fileID: 627320748184729262}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (7)
   m_TagString: Walkable
@@ -7374,6 +8184,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748184729262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748184729260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748291633694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7387,6 +8216,7 @@ GameObject:
   - component: {fileID: 1191315253153334978}
   - component: {fileID: 1999162383543339339}
   - component: {fileID: 627320748291633695}
+  - component: {fileID: 627320748291633696}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (8)
   m_TagString: Walkable
@@ -7407,6 +8237,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748291633696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748291633694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748340132047
 GameObject:
   m_ObjectHideFlags: 0
@@ -7420,6 +8269,7 @@ GameObject:
   - component: {fileID: 1191315253034060819}
   - component: {fileID: 1999162383423013786}
   - component: {fileID: 627320748340132048}
+  - component: {fileID: 627320748340132049}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (6)
   m_TagString: Walkable
@@ -7440,6 +8290,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748340132049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748340132047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748529844517
 GameObject:
   m_ObjectHideFlags: 0
@@ -7453,6 +8322,7 @@ GameObject:
   - component: {fileID: 1191315252852602361}
   - component: {fileID: 1999162384309140080}
   - component: {fileID: 627320748529844518}
+  - component: {fileID: 627320748529844519}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (1)
   m_TagString: Walkable
@@ -7473,6 +8343,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748529844519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748529844517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748755869832
 GameObject:
   m_ObjectHideFlags: 0
@@ -7486,6 +8375,7 @@ GameObject:
   - component: {fileID: 1191315252357190740}
   - component: {fileID: 1999162384099859421}
   - component: {fileID: 627320748755869833}
+  - component: {fileID: 627320748755869834}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (3)
   m_TagString: Walkable
@@ -7506,6 +8396,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748755869834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748755869832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320748796415398
 GameObject:
   m_ObjectHideFlags: 0
@@ -7519,6 +8428,7 @@ GameObject:
   - component: {fileID: 1191315252582300026}
   - component: {fileID: 1999162384047224563}
   - component: {fileID: 627320748796415399}
+  - component: {fileID: 627320748796415400}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (9)
   m_TagString: Walkable
@@ -7539,6 +8449,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320748796415400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320748796415398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320749218487591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7552,6 +8481,7 @@ GameObject:
   - component: {fileID: 1191315254046648827}
   - component: {fileID: 1999162384696829554}
   - component: {fileID: 627320749218487592}
+  - component: {fileID: 627320749218487593}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (5)
   m_TagString: Walkable
@@ -7572,6 +8502,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320749218487593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320749218487591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320749389898521
 GameObject:
   m_ObjectHideFlags: 0
@@ -7585,6 +8534,7 @@ GameObject:
   - component: {fileID: 1191315254199441349}
   - component: {fileID: 1999162384607270988}
   - component: {fileID: 627320749389898522}
+  - component: {fileID: 627320749389898523}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (10)
   m_TagString: Walkable
@@ -7605,6 +8555,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320749389898523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320749389898521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320749621164110
 GameObject:
   m_ObjectHideFlags: 0
@@ -7618,6 +8587,7 @@ GameObject:
   - component: {fileID: 1191315253912439954}
   - component: {fileID: 1999162385367925531}
   - component: {fileID: 627320749621164111}
+  - component: {fileID: 627320749621164112}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (2)
   m_TagString: Walkable
@@ -7638,6 +8608,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320749621164112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320749621164110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &627320749923098380
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,6 +8640,7 @@ GameObject:
   - component: {fileID: 1191315253677779920}
   - component: {fileID: 1999162385133134937}
   - component: {fileID: 627320749923098381}
+  - component: {fileID: 627320749923098382}
   m_Layer: 9
   m_Name: SM_Layout_Block_3x3 (4)
   m_TagString: Walkable
@@ -7671,6 +8661,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &627320749923098382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627320749923098380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!23 &719579869218798975
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8182,6 +9191,7 @@ GameObject:
   - component: {fileID: 719579869218798975}
   - component: {fileID: 8986224520143314418}
   - component: {fileID: 1279198321962699172}
+  - component: {fileID: 1279198321962699173}
   m_Layer: 9
   m_Name: SM_Layout_Block_M
   m_TagString: Walkable
@@ -8202,6 +9212,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1279198321962699173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279198321962699171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!33 &1772863101401755214
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9921,6 +10950,7 @@ GameObject:
   - component: {fileID: 6776962058992191324}
   - component: {fileID: 2261426953943744601}
   - component: {fileID: 5057627157800792961}
+  - component: {fileID: 5057627157800792962}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (12)
   m_TagString: Walkable
@@ -9941,6 +10971,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627157800792962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627157800792960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627158407346007
 GameObject:
   m_ObjectHideFlags: 0
@@ -9954,6 +11003,7 @@ GameObject:
   - component: {fileID: 6776962058390782859}
   - component: {fileID: 2261426954549249166}
   - component: {fileID: 5057627158407346008}
+  - component: {fileID: 5057627158407346009}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (10)
   m_TagString: Walkable
@@ -9974,6 +11024,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627158407346009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627158407346007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627158528553206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9987,6 +11056,7 @@ GameObject:
   - component: {fileID: 6776962058545284138}
   - component: {fileID: 2261426954662855471}
   - component: {fileID: 5057627158528553207}
+  - component: {fileID: 5057627158528553208}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (3)
   m_TagString: Walkable
@@ -10007,6 +11077,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627158528553208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627158528553206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159614186337
 GameObject:
   m_ObjectHideFlags: 0
@@ -10020,6 +11109,7 @@ GameObject:
   - component: {fileID: 6776962059599468477}
   - component: {fileID: 2261426953610449080}
   - component: {fileID: 5057627159614186338}
+  - component: {fileID: 5057627159614186339}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (6)
   m_TagString: Walkable
@@ -10040,6 +11130,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159614186339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159614186337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159634413607
 GameObject:
   m_ObjectHideFlags: 0
@@ -10053,6 +11162,7 @@ GameObject:
   - component: {fileID: 6776962059250875643}
   - component: {fileID: 2261426953623616510}
   - component: {fileID: 5057627159634413608}
+  - component: {fileID: 5057627159634413609}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (4)
   m_TagString: Walkable
@@ -10073,6 +11183,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159634413609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159634413607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159713852206
 GameObject:
   m_ObjectHideFlags: 0
@@ -10086,6 +11215,7 @@ GameObject:
   - component: {fileID: 6776962059160428530}
   - component: {fileID: 2261426953708280055}
   - component: {fileID: 5057627159713852207}
+  - component: {fileID: 5057627159713852208}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (5)
   m_TagString: Walkable
@@ -10106,6 +11236,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159713852208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159713852206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159755246798
 GameObject:
   m_ObjectHideFlags: 0
@@ -10119,6 +11268,7 @@ GameObject:
   - component: {fileID: 6776962059185059858}
   - component: {fileID: 2261426953750740759}
   - component: {fileID: 5057627159755246799}
+  - component: {fileID: 5057627159755246800}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (8)
   m_TagString: Walkable
@@ -10139,6 +11289,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159755246800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159755246798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159779116727
 GameObject:
   m_ObjectHideFlags: 0
@@ -10152,6 +11321,7 @@ GameObject:
   - component: {fileID: 6776962059362021995}
   - component: {fileID: 2261426953776706926}
   - component: {fileID: 5057627159779116728}
+  - component: {fileID: 5057627159779116729}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (7)
   m_TagString: Walkable
@@ -10172,6 +11342,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159779116729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159779116727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159810940635
 GameObject:
   m_ObjectHideFlags: 0
@@ -10185,6 +11374,7 @@ GameObject:
   - component: {fileID: 6776962059410352647}
   - component: {fileID: 2261426953799871746}
   - component: {fileID: 5057627159810940636}
+  - component: {fileID: 5057627159810940637}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (11)
   m_TagString: Untagged
@@ -10205,6 +11395,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159810940637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159810940635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5057627159867287259
 GameObject:
   m_ObjectHideFlags: 0
@@ -10218,6 +11427,7 @@ GameObject:
   - component: {fileID: 6776962059349512711}
   - component: {fileID: 2261426953856472322}
   - component: {fileID: 5057627159867287260}
+  - component: {fileID: 5057627159867287261}
   m_Layer: 9
   m_Name: SM_Layout_Block_S (9)
   m_TagString: Walkable
@@ -10238,6 +11448,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5057627159867287261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057627159867287259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!23 &5295519538005529777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11643,6 +12872,7 @@ GameObject:
   - component: {fileID: 5295519538844254993}
   - component: {fileID: 7394455297428411247}
   - component: {fileID: 5855137986167044046}
+  - component: {fileID: 5855137986167044047}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (9)
   m_TagString: Walkable
@@ -11663,6 +12893,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137986167044047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137986167044045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137986508889973
 GameObject:
   m_ObjectHideFlags: 0
@@ -11676,6 +12925,7 @@ GameObject:
   - component: {fileID: 5295519538497989545}
   - component: {fileID: 7394455297082407895}
   - component: {fileID: 5855137986508889974}
+  - component: {fileID: 5855137986508889975}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (11)
   m_TagString: Walkable
@@ -11696,6 +12946,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137986508889975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137986508889973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137986640540884
 GameObject:
   m_ObjectHideFlags: 0
@@ -11709,6 +12978,7 @@ GameObject:
   - component: {fileID: 5295519538627526664}
   - component: {fileID: 7394455296950849654}
   - component: {fileID: 5855137986640540885}
+  - component: {fileID: 5855137986640540886}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (1)
   m_TagString: Walkable
@@ -11729,6 +12999,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137986640540886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137986640540884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137986965353182
 GameObject:
   m_ObjectHideFlags: 0
@@ -11742,6 +13031,7 @@ GameObject:
   - component: {fileID: 5295519538381915650}
   - component: {fileID: 7394455297738086012}
   - component: {fileID: 5855137986965353183}
+  - component: {fileID: 5855137986965353184}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (12)
   m_TagString: Walkable
@@ -11762,6 +13052,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137986965353184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137986965353182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987000578386
 GameObject:
   m_ObjectHideFlags: 0
@@ -11775,6 +13084,7 @@ GameObject:
   - component: {fileID: 5295519538065081742}
   - component: {fileID: 7394455297664259568}
   - component: {fileID: 5855137987000578387}
+  - component: {fileID: 5855137987000578388}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (7)
   m_TagString: Walkable
@@ -11795,6 +13105,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987000578388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987000578386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987073400941
 GameObject:
   m_ObjectHideFlags: 0
@@ -11808,6 +13137,7 @@ GameObject:
   - component: {fileID: 5295519538005529777}
   - component: {fileID: 7394455297596572879}
   - component: {fileID: 5855137987073400942}
+  - component: {fileID: 5855137987073400943}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (4)
   m_TagString: Walkable
@@ -11828,6 +13158,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987073400943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987073400941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987135236962
 GameObject:
   m_ObjectHideFlags: 0
@@ -11841,6 +13190,7 @@ GameObject:
   - component: {fileID: 5295519538199486398}
   - component: {fileID: 7394455297530482624}
   - component: {fileID: 5855137987135236963}
+  - component: {fileID: 5855137987135236964}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (2)
   m_TagString: Walkable
@@ -11861,6 +13211,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987135236964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987135236962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987315318903
 GameObject:
   m_ObjectHideFlags: 0
@@ -11874,6 +13243,7 @@ GameObject:
   - component: {fileID: 5295519539839202475}
   - component: {fileID: 7394455296276128981}
   - component: {fileID: 5855137987315318904}
+  - component: {fileID: 5855137987315318905}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (6)
   m_TagString: Walkable
@@ -11894,6 +13264,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987315318905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987315318903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987422120829
 GameObject:
   m_ObjectHideFlags: 0
@@ -11907,6 +13296,7 @@ GameObject:
   - component: {fileID: 5295519540063690657}
   - component: {fileID: 7394455296206753759}
   - component: {fileID: 5855137987422120830}
+  - component: {fileID: 5855137987422120831}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (5)
   m_TagString: Walkable
@@ -11927,6 +13317,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987422120831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987422120829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987609548426
 GameObject:
   m_ObjectHideFlags: 0
@@ -11940,6 +13349,7 @@ GameObject:
   - component: {fileID: 5295519539613590102}
   - component: {fileID: 7394455295982105128}
   - component: {fileID: 5855137987609548427}
+  - component: {fileID: 5855137987609548428}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (13)
   m_TagString: Walkable
@@ -11960,6 +13370,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987609548428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987609548426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987636225947
 GameObject:
   m_ObjectHideFlags: 0
@@ -11973,6 +13402,7 @@ GameObject:
   - component: {fileID: 5295519539589665607}
   - component: {fileID: 7394455295993037625}
   - component: {fileID: 5855137987636225948}
+  - component: {fileID: 5855137987636225949}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (8)
   m_TagString: Walkable
@@ -11993,6 +13423,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987636225949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987636225947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137987839172043
 GameObject:
   m_ObjectHideFlags: 0
@@ -12006,6 +13455,7 @@ GameObject:
   - component: {fileID: 5295519539308439831}
   - component: {fileID: 7394455296826194281}
   - component: {fileID: 5855137987839172044}
+  - component: {fileID: 5855137987839172045}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (3)
   m_TagString: Walkable
@@ -12026,6 +13476,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137987839172045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137987839172043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137988054117829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12039,6 +13508,7 @@ GameObject:
   - component: {fileID: 5295519539101849881}
   - component: {fileID: 7394455296611207527}
   - component: {fileID: 5855137988054117830}
+  - component: {fileID: 5855137988054117831}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (10)
   m_TagString: Walkable
@@ -12059,6 +13529,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137988054117831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137988054117829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &5855137988297360392
 GameObject:
   m_ObjectHideFlags: 0
@@ -12072,6 +13561,7 @@ GameObject:
   - component: {fileID: 5295519539194114260}
   - component: {fileID: 7394455296401481898}
   - component: {fileID: 5855137988297360393}
+  - component: {fileID: 5855137988297360394}
   m_Layer: 9
   m_Name: SM_Layout_Block_2x2 (14)
   m_TagString: Walkable
@@ -12092,6 +13582,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5855137988297360394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855137988297360392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326129609835
 GameObject:
   m_ObjectHideFlags: 0
@@ -12105,6 +13614,7 @@ GameObject:
   - component: {fileID: 5451309322073389239}
   - component: {fileID: 2933102778091519030}
   - component: {fileID: 6024170326129609836}
+  - component: {fileID: 6024170326129609837}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (9)
   m_TagString: Walkable
@@ -12125,6 +13635,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326129609837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326129609835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326160718320
 GameObject:
   m_ObjectHideFlags: 0
@@ -12138,6 +13667,7 @@ GameObject:
   - component: {fileID: 5451309321970257196}
   - component: {fileID: 2933102778194495917}
   - component: {fileID: 6024170326160718321}
+  - component: {fileID: 6024170326160718322}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (4)
   m_TagString: Walkable
@@ -12158,6 +13688,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 3.0000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326160718322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326160718320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326190255456
 GameObject:
   m_ObjectHideFlags: 0
@@ -12171,6 +13720,7 @@ GameObject:
   - component: {fileID: 5451309322000062908}
   - component: {fileID: 2933102778156342589}
   - component: {fileID: 6024170326190255457}
+  - component: {fileID: 6024170326190255458}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (1)
   m_TagString: Walkable
@@ -12191,6 +13741,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326190255458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326190255456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326222312468
 GameObject:
   m_ObjectHideFlags: 0
@@ -12204,6 +13773,7 @@ GameObject:
   - component: {fileID: 5451309322182861000}
   - component: {fileID: 2933102777965126729}
   - component: {fileID: 6024170326222312469}
+  - component: {fileID: 6024170326222312470}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (5)
   m_TagString: Walkable
@@ -12224,6 +13794,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326222312470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326222312468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326416185028
 GameObject:
   m_ObjectHideFlags: 0
@@ -12237,6 +13826,7 @@ GameObject:
   - component: {fileID: 5451309321720586776}
   - component: {fileID: 2933102777905243801}
   - component: {fileID: 6024170326416185029}
+  - component: {fileID: 6024170326416185030}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (6)
   m_TagString: Walkable
@@ -12257,6 +13847,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326416185030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326416185028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326503710542
 GameObject:
   m_ObjectHideFlags: 0
@@ -12270,6 +13879,7 @@ GameObject:
   - component: {fileID: 5451309321891736466}
   - component: {fileID: 2933102777709063955}
   - component: {fileID: 6024170326503710543}
+  - component: {fileID: 6024170326503710544}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (14)
   m_TagString: Walkable
@@ -12290,6 +13900,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326503710544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326503710542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326636405789
 GameObject:
   m_ObjectHideFlags: 0
@@ -12303,6 +13932,7 @@ GameObject:
   - component: {fileID: 5451309321487814849}
   - component: {fileID: 2933102777575937088}
   - component: {fileID: 6024170326636405790}
+  - component: {fileID: 6024170326636405791}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (13)
   m_TagString: Walkable
@@ -12323,6 +13953,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 3.0000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326636405791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326636405789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326803062249
 GameObject:
   m_ObjectHideFlags: 0
@@ -12336,6 +13985,7 @@ GameObject:
   - component: {fileID: 5451309321656314165}
   - component: {fileID: 2933102777409678772}
   - component: {fileID: 6024170326803062250}
+  - component: {fileID: 6024170326803062251}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (7)
   m_TagString: Walkable
@@ -12356,6 +14006,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326803062251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326803062249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170326804403817
 GameObject:
   m_ObjectHideFlags: 0
@@ -12369,6 +14038,7 @@ GameObject:
   - component: {fileID: 5451309321657918133}
   - component: {fileID: 2933102777407940148}
   - component: {fileID: 6024170326804403818}
+  - component: {fileID: 6024170326804403819}
   m_Layer: 9
   m_Name: SM_Layout_Block_L
   m_TagString: Untagged
@@ -12389,6 +14059,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 3.0000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170326804403819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170326804403817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327128398058
 GameObject:
   m_ObjectHideFlags: 0
@@ -12402,6 +14091,7 @@ GameObject:
   - component: {fileID: 5451309321344117814}
   - component: {fileID: 2933102777193425079}
   - component: {fileID: 6024170327128398059}
+  - component: {fileID: 6024170327128398060}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (16)
   m_TagString: Walkable
@@ -12422,6 +14112,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000005, y: 1.0000012, z: 3.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327128398060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327128398058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327231699204
 GameObject:
   m_ObjectHideFlags: 0
@@ -12435,6 +14144,7 @@ GameObject:
   - component: {fileID: 5451309323039419864}
   - component: {fileID: 2933102779262347609}
   - component: {fileID: 6024170327231699205}
+  - component: {fileID: 6024170327231699206}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (12)
   m_TagString: Walkable
@@ -12455,6 +14165,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327231699206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327231699204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327323216587
 GameObject:
   m_ObjectHideFlags: 0
@@ -12468,6 +14197,7 @@ GameObject:
   - component: {fileID: 5451309323284037143}
   - component: {fileID: 2933102779003058838}
   - component: {fileID: 6024170327323216588}
+  - component: {fileID: 6024170327323216589}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (3)
   m_TagString: Walkable
@@ -12488,6 +14218,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 3.0000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327323216589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327323216587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327498965139
 GameObject:
   m_ObjectHideFlags: 0
@@ -12501,6 +14250,7 @@ GameObject:
   - component: {fileID: 5451309322771657807}
   - component: {fileID: 2933102778995372238}
   - component: {fileID: 6024170327498965140}
+  - component: {fileID: 6024170327498965141}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (11)
   m_TagString: Walkable
@@ -12521,6 +14271,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 3.0000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327498965141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327498965139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327674401443
 GameObject:
   m_ObjectHideFlags: 0
@@ -12534,6 +14303,7 @@ GameObject:
   - component: {fileID: 5451309322944972415}
   - component: {fileID: 2933102778828423934}
   - component: {fileID: 6024170327674401444}
+  - component: {fileID: 6024170327674401445}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (10)
   m_TagString: Walkable
@@ -12554,6 +14324,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327674401445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327674401443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327827393321
 GameObject:
   m_ObjectHideFlags: 0
@@ -12567,6 +14356,7 @@ GameObject:
   - component: {fileID: 5451309322712358901}
   - component: {fileID: 2933102778499013492}
   - component: {fileID: 6024170327827393322}
+  - component: {fileID: 6024170327827393323}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (15)
   m_TagString: Walkable
@@ -12587,6 +14377,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327827393323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327827393321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170327960978995
 GameObject:
   m_ObjectHideFlags: 0
@@ -12600,6 +14409,7 @@ GameObject:
   - component: {fileID: 5451309322309087983}
   - component: {fileID: 2933102778365294190}
   - component: {fileID: 6024170327960978996}
+  - component: {fileID: 6024170327960978997}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (8)
   m_TagString: Walkable
@@ -12620,6 +14430,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170327960978997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170327960978995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!1 &6024170328138917483
 GameObject:
   m_ObjectHideFlags: 0
@@ -12633,6 +14462,7 @@ GameObject:
   - component: {fileID: 5451309322472067767}
   - component: {fileID: 2933102778221303350}
   - component: {fileID: 6024170328138917484}
+  - component: {fileID: 6024170328138917485}
   m_Layer: 9
   m_Name: SM_Layout_Block_L (2)
   m_TagString: Walkable
@@ -12653,6 +14483,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6024170328138917485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024170328138917483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf644d71ace274c953e93e1200973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6509434, g: 0.38995194, b: 0.38995194, a: 0}
+  speed: 1
+  offset: 0
+  colorMin: 104
+  colorMax: 126
+  colorVariantMin: 0.4
+  colorVariantMax: 0.5
 --- !u!33 &6539507581218783622
 MeshFilter:
   m_ObjectHideFlags: 0

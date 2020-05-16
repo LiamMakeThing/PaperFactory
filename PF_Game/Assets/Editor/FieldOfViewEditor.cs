@@ -23,7 +23,7 @@ public class FieldOfViewEditor : Editor
         foreach (Transform visibleTarget in fov.visibleTargets)
         {
             
-            Handles.DrawLine(fov.transform.position,visibleTarget.position);
+            Handles.DrawLine(fov.transform.position,(visibleTarget.position+fov.nodeDetectOffset));
         }
     }
 }

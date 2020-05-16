@@ -93,9 +93,16 @@ public class PathfinderAStar : MonoBehaviour
             (Mathf.Round(srcPosition.z / gridSize) * gridSize)
             );
 
-
-        Node nodeAtPos = grid[key];
-        return nodeAtPos;
+        if (grid.ContainsKey(key))
+        {
+            Node nodeAtPos = grid[key];
+            return nodeAtPos;
+        }
+        else
+        {
+            return null;
+        }
+        
     }
     public List<Node> GetPath(Vector3 startPos, Vector3 endPos)
     {

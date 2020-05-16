@@ -9,9 +9,13 @@ public class NavAgent : MonoBehaviour
     //[SerializeField] List<Node> tempManualPath = new List<Node>();
     [SerializeField]float moveSpeed = 0.10f;
     int targetNodeIndex;
-
+    PathfinderAStar pathfinder;
     //is given a path and follows it.
 
+    private void Awake()
+    {
+        pathfinder = GameObject.FindObjectOfType<PathfinderAStar>();
+    }
     private void Start()
     {
         
@@ -42,8 +46,16 @@ public class NavAgent : MonoBehaviour
         {
             if(transform.position == currentNodePos)
             {
-
-
+                //we have arrived at a location. At this point it will be either a node or an inserted bridge point. We need to check the former to see if it is visible by other units by accessing the node via the navgrid dictionary.
+                if (pathfinder.GetNodeFromGridPosition(currentNodePos) != null)
+                {
+                    Node currentNode = pathfinder.GetNodeFromGridPosition(currentNodePos);
+                    if (currentNode.GetDetectionLevel())
+                    {
+                        print("Unit Visible!");
+                    }
+                }
+                
 
                 targetNodeIndex++;
                 
@@ -57,6 +69,7 @@ public class NavAgent : MonoBehaviour
                     yield break;
 
                 }
+
                 currentNodePos = posPathToFollow[targetNodeIndex];
                 
             }
