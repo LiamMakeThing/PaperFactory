@@ -10,6 +10,7 @@ public class PathfinderAStar : MonoBehaviour
     enum NodeGenMode {CaptureExisting, SampleWalkable}
     [SerializeField] NodeGenMode nodeGenMode = new NodeGenMode();
     float gridSize = 1.0f;
+    
 
 
     private void Awake()
@@ -193,6 +194,8 @@ public class PathfinderAStar : MonoBehaviour
     }
     public List<Node> GetNeighbours(Node searchCenter)
     {
+        List<Vector3> skipNeighbours = SearchCardinalDirections(searchCenter);
+
         List<Node> neighbours = new List<Node>();
 
         for(int x= -1; x <= 1; x++)
@@ -218,7 +221,7 @@ public class PathfinderAStar : MonoBehaviour
                            neighbours.Add(grid[linkedCoord]);
                         }
                     }
-                    if (grid.ContainsKey(neighbourCoordinate))
+                    if (grid.ContainsKey(neighbourCoordinate)&&!skipNeighbours.Contains(neighbourCoordinate))
                     {
                         neighbours.Add(grid[neighbourCoordinate]);
                     }
@@ -228,5 +231,50 @@ public class PathfinderAStar : MonoBehaviour
         }
         return neighbours;
     }
+    List<Vector3> SearchCardinalDirections(Node searchCenter) //Seach NSEW of node. If there is not a node in those locations, add the corresponding diagonal neighbour coordinate to the skip list.
+    {
+        List<Vector3> skipNeighbours = new List<Vector3>();
 
+        int searchCenterPosX = (int)searchCenter.GetGridPosition().x;
+        int searchCenterPosY = (int)searchCenter.GetGridPosition().y;
+        int searchCenterPosZ = (int)searchCenter.GetGridPosition().z;
+        //check forward
+        Vector3 searchCoordForward = new Vector3(searchCenterPosX, searchCenterPosY, searchCenterPosZ+1);
+        //check backward
+        Vector3 searchCoordBack = new Vector3(searchCenterPosX, searchCenterPosY, searchCenterPosZ-1);
+        //check left
+        Vector3 searchCoordLeft = new Vector3(searchCenterPosX-1, searchCenterPosY, searchCenterPosZ);
+        //check right
+        Vector3 searchCoordRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ);
+
+
+        Vector3 forwardLeft = new Vector3(searchCenterPosX - 1,searchCenterPosY,searchCenterPosZ+1);
+        Vector3 forwardRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ + 1);
+        Vector3 backLeft = new Vector3(searchCenterPosX - 1, searchCenterPosY, searchCenterPosZ - 1);
+        Vector3 backRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ - 1);
+        
+        if (!grid.ContainsKey(searchCoordForward))
+        {
+            skipNeighbours.Add(forwardLeft);
+            skipNeighbours.Add(forwardRight);
+        }
+        if (!grid.ContainsKey(searchCoordBack))
+        {
+            skipNeighbours.Add(backLeft);
+            skipNeighbours.Add(backRight);
+        }
+        if (!grid.ContainsKey(searchCoordLeft))
+        {
+            skipNeighbours.Add(forwardLeft);
+            skipNeighbours.Add(backLeft);
+        }
+        if (!grid.ContainsKey(searchCoordRight))
+        {
+            skipNeighbours.Add(backRight);
+            skipNeighbours.Add(forwardRight);
+        }
+
+        
+        return skipNeighbours;
+    }
 }
