@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2892293779498722459
+--- !u!1 &664553695
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,28 +8,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6315121788122197042}
+  - component: {fileID: 664553696}
   m_Layer: 0
   m_Name: TargetPositionMovement
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6315121788122197042
+--- !u!4 &664553696
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2892293779498722459}
-  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_GameObject: {fileID: 664553695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7808500657580494783}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4838373282639982765
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,17 +76,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateLocal: 0
-  camObject: {fileID: 0}
-  targetPositionPoV: {fileID: 0}
-  targetPositionMovement: {fileID: 0}
-  targetPositionStrategic: {fileID: 0}
   travelSpeed: 0.125
   cameraMoveModeObj: {fileID: 0}
-  edgeScrollWidth: 0
-  scrollSpeed: 400
-  rotateSpeed: 150
-  smoothDampTime: 0.5
-  rotationSmoothTime: 0.12
+  edgeScrollWidth: 10
+  scrollSpeed: 100
+  rotateSpeed: 100
+  smoothDampTime: 0.75
+  camPanBounds: {x: 15, y: 10}
   mouseSensitivity: 10
   distFromTarget: 2
   povPitchClamp: {x: -40, y: 85}
@@ -115,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6282163050522271825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 658771652524737821}
@@ -149,7 +145,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6315121788122197042}
+  - {fileID: 664553696}
   m_Father: {fileID: 4838373282639982739}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,8 +190,8 @@ Camera:
   m_GameObject: {fileID: 7640484559391061313}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.49019608, g: 0.21960784, b: 0.49019608, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

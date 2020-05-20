@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum CameraTransitionType
+{
+    SmoothLerp, Pop, Fade
+}
+public enum CameraTransformFilter
+{
+    Positon, Rotation, PositionAndRotation
+}
 public class MultiModeCamera : MonoBehaviour
 {
     /// <summary>
@@ -9,11 +18,11 @@ public class MultiModeCamera : MonoBehaviour
     /// </summary>
     // Start is called before the first frame update
     [SerializeField] GameState gameStateLocal = new GameState();
-    GameState cachedGameState = new GameState();
-    [SerializeField] Transform camObject;
-    [SerializeField] Transform targetPositionPoV;
-    [SerializeField] Transform targetPositionMovement;
-    [SerializeField] Transform targetPositionStrategic;
+    //GameState cachedGameState = new GameState();
+    Transform camObject;
+    Transform targetPositionPoV;
+    Transform targetPositionMovement;
+    
 
     [SerializeField] float travelSpeed = 0.125f;
 
@@ -21,6 +30,9 @@ public class MultiModeCamera : MonoBehaviour
     bool inputEnabled;
 
     CurrentUnitHandler unitHandler;
+    GameStateHandler gameStateHandler;
+
+    Unit currentUnit;
     
 
     [Header("MovementModeCamera")]
@@ -31,7 +43,7 @@ public class MultiModeCamera : MonoBehaviour
     [SerializeField] float smoothDampTime = 0.75f;
     Vector3 smoothDampVelocity = Vector3.zero;
     Vector3 currentMoveCamRotation;
-    [SerializeField] float rotationSmoothTime = 0.12f;
+    float rotationSmoothTime = 0.12f;
     Vector3 rotationSmoothVelocity;
     float spin;
     [SerializeField] Vector2 camPanBounds = new Vector2(25, 25);
@@ -51,14 +63,7 @@ public class MultiModeCamera : MonoBehaviour
     Vector3 currentPoVRotation;
     Camera mainCam;
 
-    enum CameraTransitionType
-    {
-        SmoothLerp, Pop, Fade
-    }
-    enum CameraTransformFilter
-    {
-        Positon, Rotation, PositionAndRotation
-    }
+
     private void Awake()
     {
         mainCam = Camera.main;
@@ -66,6 +71,7 @@ public class MultiModeCamera : MonoBehaviour
         targetPositionMovement = GameObject.Find("TargetPositionMovement").transform;
         cameraMoveModeObj = GameObject.Find("CamMovePanner").transform;
         unitHandler = GameObject.FindObjectOfType<CurrentUnitHandler>();
+        gameStateHandler = GameObject.FindObjectOfType<GameStateHandler>();
 
     }
     
@@ -73,69 +79,24 @@ public class MultiModeCamera : MonoBehaviour
 
     void Start()
     {
-        
-        //
-        cachedGameState = gameStateLocal;
+        gameStateLocal = gameStateHandler.GetGameState();
         inputEnabled = true;
-        //temp 
-
-        gameStateLocal = GameState.pov;
     }
 
+    public void UpdateGameState(GameState gameState)
+    {
+        if (gameStateLocal!=gameState)
+        {
+            gameStateLocal = gameState;
+            CenterCamOnUnit(currentUnit, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation,false);
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {   
        
-        //FIRE OFF CAMERA TRANSITIONS OF GAMESTATE CHANGED
-        if (!cameraInTransit)
-        { 
-            
-            //TEMP. SPACE TO TOGGLE THROUGH GAMESTATES
-            if (Input.GetKey("space"))
-            {
-                if (gameStateLocal == GameState.movement)
-                {
-                    gameStateLocal = GameState.pov;
-                }
-                else if (gameStateLocal == GameState.pov)
-                {
-                    gameStateLocal = GameState.movement;
-                }
-            }
-            if (gameStateLocal != cachedGameState)
-            {
-                cachedGameState = gameStateLocal;
-                switch (gameStateLocal)
-                {
-                    case GameState.movement:
-                        Debug.Log("CameraMode switching to movement");
-                        //TODO-Before setting target, move the movement cam parent object to a logical default relative to the POV it is switching from.
-                        SetNewPosition(targetPositionMovement, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation);
-                        camObject.SetParent(cameraMoveModeObj);
-                        
-                        break;
-                    case GameState.pov:
-                        Debug.Log("CameraMode switching to pov");
-                        camObject.SetParent(null);
-
-                        povPitch = 0.0f;
-                        povYaw = 0.0f;
-                        currentPoVRotation = new Vector3(0,0,0);
-
-                        targetPositionPoV = unitHandler.GetCurrentUnit().povTarget;
-                        SetNewPosition(targetPositionPoV, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation);
-                        
-
-                        break;
-                    case GameState.strategic:
-                        Debug.Log("CameraMode switching to strategic");
-                        break;
-                    default:
-                        Debug.Log("CameraMode switch fired but no output");
-                        break;
-                }
-            }
-        }
+        
     }
 
     private void LateUpdate()
@@ -210,12 +171,9 @@ public class MultiModeCamera : MonoBehaviour
 
                     currentPoVRotation = Vector3.SmoothDamp(currentPoVRotation, new Vector3(povPitch, povYaw), ref povRotationSmoothVelocity, povRotationSmoothTime);
 
-                    camObject.eulerAngles = currentPoVRotation + targetPositionPoV.eulerAngles;
+                    camObject.eulerAngles = currentPoVRotation + currentUnit.povTarget.eulerAngles;
                     break;
 
-                case GameState.strategic:
-
-                    break;
                 default:
                     break;
             }
@@ -226,29 +184,56 @@ public class MultiModeCamera : MonoBehaviour
     }
 
 
-    void SetNewPosition(Transform newTransform, CameraTransitionType transitionType, CameraTransformFilter camTransformFilter)
+    public void CenterCamOnUnit(Unit newUnit, CameraTransitionType transitionType, CameraTransformFilter camTransformFilter,bool overrideExistingTransit)
     {
-        switch (transitionType)
+
+        if (!cameraInTransit||overrideExistingTransit)
         {
-            case CameraTransitionType.Fade:
-                StartCoroutine(RunFadeTransitionSequence(newTransform, camTransformFilter));
-                break;
-            case CameraTransitionType.Pop:
-                camObject.position = newTransform.position;
-                camObject.rotation = newTransform.rotation;
-                break;
-            case CameraTransitionType.SmoothLerp:
-                StartCoroutine(MoveObject(newTransform, camTransformFilter));
-                break;
-            default:
-                break;
+            currentUnit = newUnit;
+            Transform targetTransform = this.transform;//temporarily assign it as this transform to initialize it. It gets overridden in the following switch
+            switch (gameStateLocal)
+            {
+                case GameState.movement:
+                    targetTransform = currentUnit.movementTarget;
+                    camObject.SetParent(cameraMoveModeObj);
+                    break;
+                case GameState.pov:
+                    targetTransform = currentUnit.povTarget;
+                    camObject.SetParent(null);
+
+                    povPitch = 0.0f;
+                    povYaw = 0.0f;
+                    currentPoVRotation = new Vector3(0, 0, 0);
+                    break;
+            }
+
+            
+            switch (transitionType)
+            {
+                case CameraTransitionType.Fade:
+                    StartCoroutine(RunFadeTransitionSequence(targetTransform, camTransformFilter));
+                    break;
+                case CameraTransitionType.Pop:
+                    camObject.position = targetTransform.position;
+                    camObject.rotation = targetTransform.rotation;
+                    break;
+                case CameraTransitionType.SmoothLerp:
+                    object[] parms = new object[2] { targetTransform,camTransformFilter};
+                    StopCoroutine("MoveObject");
+                    StartCoroutine("MoveObject", parms);
+                    
+                    break;
+                default:
+                    break;
+            }
         }
+        
     }
 
     IEnumerator RunFadeTransitionSequence(Transform newTransform,CameraTransformFilter camTransformFilter)
     {
         yield return StartCoroutine(Fade(true));
-        yield return StartCoroutine(MoveObject(newTransform, camTransformFilter));
+        //yield return StartCoroutine(MoveObject(newTransform, camTransformFilter));
         yield return StartCoroutine(Fade(false));
     }
 
@@ -280,8 +265,10 @@ public class MultiModeCamera : MonoBehaviour
         
     }
 
-    IEnumerator MoveObject(Transform targetTransform,CameraTransformFilter camTransformFilter)
+    IEnumerator MoveObject(object[] parms)
     {
+        Transform targetTransform = (Transform)parms[0];
+        CameraTransformFilter camTransformFilter = (CameraTransformFilter)parms[1];
         float timeCount = 0.0f;
         //loop while distance and rotation are not equal
         float distTolerance = 0.1f;

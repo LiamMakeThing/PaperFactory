@@ -19,19 +19,14 @@ public class CurrentUnitHandler : MonoBehaviour
     [Header("Defaults")]
     [SerializeField] Unit currentlySelectedUnit;
 
-
-    //COMPONENTS THIS SCRIPT POKES. (OUTGOING)
-    NavCamera navCamera;
-    NavGridInteractionLayer navGridInteraction;
-
-    
+    MultiModeCamera mmCam;
+    GameStateHandler gameStateHandler;
 
     private void Awake()
     {
-        navCamera = GameObject.FindObjectOfType<NavCamera>();
-        navGridInteraction = GameObject.FindObjectOfType<NavGridInteractionLayer>();
+        mmCam = GameObject.FindObjectOfType<MultiModeCamera>();
+        gameStateHandler = GameObject.FindObjectOfType<GameStateHandler>();
     }
-
 
 
     public Unit GetCurrentUnit()
@@ -51,6 +46,10 @@ public class CurrentUnitHandler : MonoBehaviour
         if (currentlySelectedUnit != unit)
         {
             currentlySelectedUnit = unit;
+            
+            
+            mmCam.CenterCamOnUnit(currentlySelectedUnit, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation,true);
+
         }
     }
 
