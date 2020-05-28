@@ -36,6 +36,7 @@ public class TurnManager : MonoBehaviour
         unitsByInit.Sort(SortUnitsByInitiativeFunc);
 
         SetCurrentUnit();
+
         
     }
     private void Update()
@@ -69,7 +70,40 @@ public class TurnManager : MonoBehaviour
     void SetCurrentUnit()
     {
         Unit currentUnit = unitsByInit[currentTurnIndex];
+        
         unitHandler.SetCurrentUnit(currentUnit);
+        Faction curFaction = currentUnit.GetFaction();
+        switch (curFaction)
+        {
+            case Faction.Player:
+                
+                break;
+            case Faction.Enemy:
+                
+                StartCoroutine(BeginEnemyTurn(currentUnit));
+                break;
+            case Faction.Ally:
+                
+                break;
+            default:
+                break;
+        }
+        
+
+
+    }
+
+    IEnumerator BeginEnemyTurn(Unit currentUnit)
+    {
+        AICore curEnemy = currentUnit.GetComponent<AICore>();
+        yield return StartCoroutine(EnemyTurn(curEnemy));
+        //Enemy turn done, advancing turn
+        AdvanceTurn();
+    }
+    IEnumerator EnemyTurn(AICore curEnemy)
+    {
+        curEnemy.TakeTurn();
+        yield return new WaitForSeconds(2.0f);
     }
     private int SortUnitsByInitiativeFunc(Unit unitA, Unit unitB)
     {

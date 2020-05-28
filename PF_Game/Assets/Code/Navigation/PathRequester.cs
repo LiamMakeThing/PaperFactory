@@ -9,17 +9,23 @@ public class PathRequester : MonoBehaviour
     [SerializeField] Vector3 endPosition;
     PathfinderAStar pathFinder;
     PathRenderer pathRenderer;
+    PathVisualizer pathVisualizer;
     List<Vector3> finalPath = new List<Vector3>();
     CurrentUnitHandler unitHandler;
     [SerializeField] Transform destinationCursor;
     bool isDestinationCursorActive;
     Dictionary<int, Vector3> bridgePositions = new Dictionary<int, Vector3>();
+
+    Unit currentUnit;
+
+
     // Start is called before the first frame update
 
     private void Awake()
     {
         pathFinder = GetComponent<PathfinderAStar>();
         pathRenderer = GetComponent<PathRenderer>();
+        pathVisualizer = GetComponent<PathVisualizer>();
         unitHandler = GameObject.FindObjectOfType<CurrentUnitHandler>();
 
     }
@@ -38,14 +44,16 @@ public class PathRequester : MonoBehaviour
                 
                 UpdateDestinationCursor(tempPos, true);
 
+                if (endPosition != tempPos)
+                {
+                    endPosition = tempPos;
+                    RequestPath();
+                }
+
                 if (Input.GetButtonDown("LeftClick"))
-                {         
-                    if (endPosition != tempPos)
-                    {
-                        endPosition = tempPos;
-                        RequestPath();
-                    }
-                    
+                {
+                    currentUnit.GetComponent<NavAgent>().MoveNavAgent(finalPath);
+
                 }
             }else if (!hit.transform.GetComponent<Node>())
             {
@@ -60,19 +68,20 @@ public class PathRequester : MonoBehaviour
     }
     void RequestPath()
     {
-        Unit currentUnit = unitHandler.GetCurrentUnit();
         
+        
+        currentUnit = unitHandler.GetCurrentUnit();
         startPosition = currentUnit.transform.position;
-
         List<Node> rawPath =pathFinder.GetPath(startPosition, endPosition);
-
         finalPath = new List<Vector3>();
         finalPath = CleanUpPath(rawPath);
+        pathVisualizer.UpdatePath(rawPath);
 
-        currentUnit.GetComponent<NavAgent>().MoveNavAgent(finalPath);
+        
+        
     }
 
-    List<Vector3> CleanUpPath(List<Node> rawPath) // TAKES IN REQUESTED PATH FROM PATHFINDER. EVALUATES FOR ELEVATION...AND ANYTHING ELSE, AND PLOTS ALL POINTS BEFORE COMMITTING THE MOVE TO THE NAV AGENT.
+    public List<Vector3> CleanUpPath(List<Node> rawPath) // TAKES IN REQUESTED PATH FROM PATHFINDER. EVALUATES FOR ELEVATION...AND ANYTHING ELSE, AND PLOTS ALL POINTS BEFORE COMMITTING THE MOVE TO THE NAV AGENT.
     {
    
         //CONVERT PATH TO VECTOR LIST, instead of nodes

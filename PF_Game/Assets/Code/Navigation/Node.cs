@@ -15,6 +15,8 @@ public class Node : MonoBehaviour
     public bool isExplored;
     public Node exploredFrom;
     [SerializeField] bool isInPath;
+    [SerializeField] GameObject pathIndicator;
+
     public bool isLink;
     //public float linkDestinationElevation;
     [SerializeField] List<Vector3> linkedNeighbourCoords = new List<Vector3>();
@@ -56,9 +58,9 @@ public class Node : MonoBehaviour
         linkedNeighbourCoords = neighbourCoords;
     }
 
-    public void SetIsInPath(bool state)
+    public void SetShowPathIndicator(bool state)
     {
-        //labelIsInPath.enabled = state;
+        pathIndicator.SetActive(state);
         
     }
     private void Start()

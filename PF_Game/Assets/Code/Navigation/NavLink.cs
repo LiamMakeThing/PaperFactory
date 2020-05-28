@@ -8,22 +8,33 @@ public class NavLink : MonoBehaviour
 {
     [SerializeField] List<Vector3> links = new List<Vector3>();
     [SerializeField] Color linkWireColor = new Color(0.4f,0.8f,1.0f,1.0f);
+    Transform[] childrenTargets;
     // Start is called before the first frame update
     void Start()
     {
         
+    
     }
 
     // Update is called once per frame
     void Update()
     {
         //Look for children targets, add them to links
-        var childrenTargets = GetComponentsInChildren<Transform>();
+        childrenTargets = GetComponentsInChildren<Transform>();
         AddLinkPositionsToList(childrenTargets);
-       
-        
-       
-        
+
+
+      
+
+    }
+    public void DisableColliders()
+    {
+        this.GetComponent<Collider>().enabled = false;
+        Collider[] childrenLinks = GetComponentsInChildren<Collider>();
+        foreach (Collider c in childrenLinks)
+        {
+            c.enabled = false;
+        }
     }
     void AddLinkPositionsToList(Transform[] tArray)
     { //ensure this object (the parent) is not in the list by starting the iteration at 1. GetComponentsInChildren searches the root as well so we have to strip it out.

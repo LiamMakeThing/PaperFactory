@@ -19,11 +19,12 @@ public class GameStateHandler : MonoBehaviour
 /// TURN MANAGER CAN PUSH TO THIS. UNIT SWITCHING CAN UPDATE STATES.
 /// OTHER CLASSES REFERENCE THE ENUM STATE AND FILTER THEIR OWN INPUT THROUGH THEIR INTERACTION LAYER
 /// </summary>
-    public bool userInputEnabled;
+    
     [SerializeField] GameState currentGameState = new GameState();
     [SerializeField] GameState startingGameState = new GameState();
 
     MultiModeCamera mmCam;
+    CameraController ccCam;
 
     //need an enum for game state
 
@@ -32,12 +33,14 @@ public class GameStateHandler : MonoBehaviour
     {
         SetGameState(startingGameState);
         mmCam = GameObject.FindObjectOfType<MultiModeCamera>();
-    }
-    void Start()
-    {
-        userInputEnabled = true;
-    }
+        ccCam = GameObject.FindObjectOfType<CameraController>();
 
+    }
+    private void Start()
+    {
+        SetGameState(startingGameState);
+        
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -54,14 +57,15 @@ public class GameStateHandler : MonoBehaviour
                 default:
                     break;
             }
+            
 
-            mmCam.UpdateGameState(currentGameState);
         }
     }
 
     public void SetGameState(GameState newState)
     {
         currentGameState = newState;
+        
     }
     public GameState GetGameState()
     {

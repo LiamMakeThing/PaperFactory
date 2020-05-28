@@ -19,12 +19,12 @@ public class CurrentUnitHandler : MonoBehaviour
     [Header("Defaults")]
     [SerializeField] Unit currentlySelectedUnit;
 
-    MultiModeCamera mmCam;
+    CameraController ccCam;
     GameStateHandler gameStateHandler;
 
     private void Awake()
     {
-        mmCam = GameObject.FindObjectOfType<MultiModeCamera>();
+        ccCam = GameObject.FindObjectOfType<CameraController>();
         gameStateHandler = GameObject.FindObjectOfType<GameStateHandler>();
     }
 
@@ -48,7 +48,8 @@ public class CurrentUnitHandler : MonoBehaviour
             currentlySelectedUnit = unit;
             
             
-            mmCam.CenterCamOnUnit(currentlySelectedUnit, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation,true);
+            ccCam.CenterCamOnUnit(currentlySelectedUnit);
+            //ccCam.CenterCamOnUnit(currentlySelectedUnit, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation,true);
 
         }
     }

@@ -10,6 +10,7 @@ public class NavAgent : MonoBehaviour
     [SerializeField]float moveSpeed = 0.10f;
     int targetNodeIndex;
     PathfinderAStar pathfinder;
+    public Vector3 facingDirection;
     //is given a path and follows it.
 
     private void Awake()
@@ -20,6 +21,9 @@ public class NavAgent : MonoBehaviour
     {
         
     }
+
+
+
     public void MoveNavAgent(List<Vector3> path)
     {
         //nodePathToFollow = tempManualPath;
@@ -32,9 +36,9 @@ public class NavAgent : MonoBehaviour
 
     IEnumerator BeginFollowingPath()
     {
-        Debug.Log("Path Received. Beginning movement");
+        //Path Received. Beginning movement
         yield return StartCoroutine(FollowPath());
-        Debug.Log("Path Complete");
+        //Path Complete
     }
     IEnumerator FollowPath()
     {
@@ -52,8 +56,9 @@ public class NavAgent : MonoBehaviour
                     Node currentNode = pathfinder.GetNodeFromGridPosition(currentNodePos);
                     if (currentNode.GetDetectionLevel())
                     {
-                        print("Unit Visible!");
+                     //TODO. Unit is visible. Should probably do something about that
                     }
+                    currentNode.SetShowPathIndicator(false);
                 }
                 
 
@@ -74,6 +79,8 @@ public class NavAgent : MonoBehaviour
                 
             }
             transform.position = Vector3.MoveTowards(transform.position, currentNodePos, moveSpeed * Time.deltaTime);
+
+            facingDirection = Vector3.Normalize(transform.position - currentNodePos);
             
             yield return null;
         }

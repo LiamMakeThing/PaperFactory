@@ -64,6 +64,9 @@ public class PathfinderAStar : MonoBehaviour
 
                     grid.Add(parentLinkNode.GetGridPosition(), parentLinkNode);
 
+                    //Colliders on nav links are required in editor to be picked up by auto gen but then need to be disabled on start.
+                    navLink.DisableColliders();
+
                     //Spawn node(s) for linked pos and pass through the parentPos as their neighbour.LinkedNeighbours is nodes. Need to set these after spawning. Hmmm. No we just need to search by grid coordinate, not by node in search method.
 
                     foreach (Vector3 linkPos in linkedPositions)
@@ -176,7 +179,7 @@ public class PathfinderAStar : MonoBehaviour
         return path;
 
     }
-
+    
     int GetDistance(Node nodeA, Node nodeB)
     {
         //costs
