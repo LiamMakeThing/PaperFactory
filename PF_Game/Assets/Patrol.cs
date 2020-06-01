@@ -33,11 +33,13 @@ public class Patrol : MonoBehaviour
         
         
     }
+
     // Start is called before the first frame update
-    public void StartNewPatrol(List<Vector3> waypoints,int unitAP)
+    public void StartNewPatrol(PatrolRoute route,int unitAP)
     {
+        
         isPatroling = true;
-        patrolPoints = waypoints;
+        patrolPoints = route.GetPatrolPositions();
         //From their current position, they need to find the closest waypoint. 
         //Get its index, that is the first destination point.
         nextPatrolPointIndex = FindClosestPatrolPointIndex();

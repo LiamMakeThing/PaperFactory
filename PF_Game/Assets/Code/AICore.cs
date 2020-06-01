@@ -14,6 +14,8 @@ public class AICore : MonoBehaviour
     Patrol patrol;
     [SerializeField] List<Vector3> patrolPoints;
     Unit unit;
+    PatrolPoint closestPoint;
+    PatrolRoute closestRoute;
     /// <summary>
     /// How the AI unit reacts to sensor stimuli, manages its perception level etc. Acts as a hub, connecting behaviours.
     /// </summary>
@@ -38,17 +40,48 @@ public class AICore : MonoBehaviour
     }
     public void TakeTurn()
     {
-        
-        
+        FindClosestPatrol();        
         if (!patrol.GetPatrolState())
         {
-            patrol.StartNewPatrol(patrolPoints,unit.GetAvailableAP());
+            patrol.StartNewPatrol(closestRoute,unit.GetAvailableAP());
         }else if (patrol.GetPatrolState())
         {
             patrol.ContinuePatrol(unit.GetAvailableAP());
         }
     }
+    void FindClosestPatrol()
+    {
+        /*Find all patrol points
+         * Get Closest
+         * Find the parent patrol
+         * Start patrol
+         */
+        PatrolPoint[] allPatrolPoints = GameObject.FindObjectsOfType<PatrolPoint>();
+        float closestPointDistance = 1000.0f;
+
+        if (allPatrolPoints.Length != 0)
+        {
+            if (allPatrolPoints.Length == 1)
+            {
+                closestPoint = allPatrolPoints[0];
+            }
+            else if (allPatrolPoints.Length > 1)
+            {
+                foreach (PatrolPoint pp in allPatrolPoints)
+                {
+                    float dist = Vector3.Distance(transform.position, pp.transform.position);
+                    if (dist < closestPointDistance)
+                    {
+                        closestPointDistance = dist;
+                        closestPoint = pp;
+                    }
+                }
+            }
+            closestRoute = closestPoint.GetParentRoute();
+        }
+        
+    }
 
 
-    
+
 }

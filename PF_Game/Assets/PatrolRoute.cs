@@ -25,7 +25,10 @@ public class PatrolRoute : MonoBehaviour
         {
             patrolPositions.Add(tArray[i].position);
         }
-        
+    }
+    public List<Vector3> GetPatrolPositions()
+    {
+        return patrolPositions;
     }
     
     private void OnDrawGizmos()

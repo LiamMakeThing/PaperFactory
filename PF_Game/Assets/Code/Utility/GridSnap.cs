@@ -4,8 +4,10 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class GridSnap : MonoBehaviour
 {
-    const float gridSnapSize = 0.5f;
+    [SerializeField] float gridSnapSize = 0.5f;
+    [SerializeField] float rotSnapSize = 90.0f;
     Vector3 snapPos;
+    Vector3 snapRot;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,12 @@ public class GridSnap : MonoBehaviour
         snapPos.x = Mathf.RoundToInt(transform.position.x / gridSnapSize) * gridSnapSize;
         snapPos.y = Mathf.RoundToInt(transform.position.y / gridSnapSize) * gridSnapSize;
         snapPos.z = Mathf.RoundToInt(transform.position.z / gridSnapSize) * gridSnapSize;
-        transform.position = snapPos;   
+        transform.position = snapPos;
+
+        //Add rotation snap. 90 for now
+        snapRot.x = Mathf.RoundToInt(transform.eulerAngles.x / rotSnapSize) * rotSnapSize;
+        snapRot.y = Mathf.RoundToInt(transform.eulerAngles.y / rotSnapSize) * rotSnapSize;
+        snapRot.z = Mathf.RoundToInt(transform.eulerAngles.z / rotSnapSize) * rotSnapSize;
+        transform.eulerAngles = snapRot;
     }
 }
