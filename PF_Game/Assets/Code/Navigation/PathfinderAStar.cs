@@ -322,6 +322,31 @@ public class PathfinderAStar : MonoBehaviour
             skipNeighbours.Add(searchCoordRight);
         }
 
+        /*CHECK DIAGONALS-Raycast only. 
+        In some cases, standing on an outside corner of a bulding for example, checking cardinal directions for nodes and raycast is not sufficient as it all returns false (as it should)
+        Need to also search diagonals with raycast for corners
+        */
+        //ForwardLeft
+        if (CheckForObstructions(rayCastSource,new Vector3(-1, 0, 1)))
+        {
+            skipNeighbours.Add(forwardLeft);
+        }
+        //Forward Right
+        if(CheckForObstructions(rayCastSource, new Vector3(1, 0, 1)))
+        {
+            skipNeighbours.Add(forwardRight);
+        }
+        //Back Right
+        if (CheckForObstructions(rayCastSource, new Vector3(1, 0, -1)))
+        {
+            skipNeighbours.Add(backRight);
+        }
+        //Back Left
+        if (CheckForObstructions(rayCastSource, new Vector3(-1, 0, -1)))
+        {
+            skipNeighbours.Add(backLeft);
+        }
+
 
 
         return skipNeighbours;

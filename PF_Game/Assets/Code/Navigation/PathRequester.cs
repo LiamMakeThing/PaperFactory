@@ -34,38 +34,44 @@ public class PathRequester : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 100.0f))
+        //only do this if it is the players turn
+        if (unitHandler.GetCurrentUnit().GetFaction() == Faction.Player)
         {
-            Vector3 tempPos = hit.transform.position;
-            if (hit.transform.GetComponent<Node>())
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                
-                UpdateDestinationCursor(tempPos, true);
-
-                if (endPosition != tempPos)
+                Vector3 tempPos = hit.transform.position;
+                if (hit.transform.GetComponent<Node>())
                 {
-                    endPosition = tempPos;
-                    RequestPath();
-                }
 
-                if (Input.GetButtonDown("LeftClick"))
+                    UpdateDestinationCursor(tempPos, true);
+
+                    if (endPosition != tempPos)
+                    {
+                        endPosition = tempPos;
+                        RequestPath();
+                    }
+
+                    if (Input.GetButtonDown("LeftClick"))
+                    {
+                        currentUnit.GetComponent<NavAgent>().MoveNavAgent(finalPath);
+
+                    }
+                }
+                else if (!hit.transform.GetComponent<Node>())
                 {
-                    currentUnit.GetComponent<NavAgent>().MoveNavAgent(finalPath);
+                    if (isDestinationCursorActive)
+                    {
+                        UpdateDestinationCursor(tempPos, false);
+                    }
 
                 }
-            }else if (!hit.transform.GetComponent<Node>())
-            {
-                if (isDestinationCursorActive)
-                {
-                    UpdateDestinationCursor(tempPos, false);
-                }
-                
             }
+
         }
-     
     }
+        
     void RequestPath()
     {
         
