@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] float camRotateSpeed = 125.0f;
     [SerializeField] float camPanSpeed = 1000.0f;
-    [SerializeField] Vector2 camPanBounds = new Vector2(10.0f,10.0f);
+    public Vector2 camPanBounds = new Vector2(10.0f,10.0f);
 
     [SerializeField] float smoothDampTime = 0.75f;
     Vector3 smoothDampVelocity = Vector3.zero;

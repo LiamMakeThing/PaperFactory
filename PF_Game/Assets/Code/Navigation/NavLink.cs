@@ -52,12 +52,46 @@ public class NavLink : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Draw line connetcing nodes.
-        Gizmos.color = linkWireColor;
+
         //Handles.color = linkWireColor;
+        /*for each link, check which is higher, the hub or the link. If 
+        which ever one is lower, take the x and z pos and the y pos of the higher one. 
+        Use this new vector as the coordinate for the joint sphere.
+        Draw a line from the hub to the joint sphere and the joint sphere to the link
+        */
+        Gizmos.color = linkWireColor;
+
+        bool hasJoint = false;
         foreach (Vector3 p in links)
         {
+            Vector3 jointPos = new Vector3();
+            if (p.y > transform.position.y)
+            {
+                hasJoint = true;
+                jointPos.x = transform.position.x;
+                jointPos.y = p.y;
+                jointPos.z = transform.position.z;
+            }else if (p.y < transform.position.y)
+            {
+                hasJoint = true;
+                jointPos.x = p.x;
+                jointPos.y = transform.position.y;
+                jointPos.z = p.z;
+            }
+            else
+            {
+                hasJoint = false;
+            }
+            if (hasJoint)
+            {
+                Gizmos.DrawSphere(jointPos, 0.25f);
+                Gizmos.DrawLine(transform.position, jointPos);
+                Gizmos.DrawLine(jointPos, p);
+            }else if (!hasJoint)
+            {
+                Gizmos.DrawLine(transform.position, p);
+            }
             
-            Gizmos.DrawLine(p, transform.position);
             Gizmos.DrawWireCube(p, new Vector3(1.0f, 0.1f, 1.0f));
             
         }

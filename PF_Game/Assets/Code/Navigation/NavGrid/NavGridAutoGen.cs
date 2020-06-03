@@ -94,11 +94,11 @@ public class NavGridAutoGen : MonoBehaviour
     {
         return nodePositions;
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         float padding = 0.1f;
-
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridScale.x, 0, gridScale.y));
+        Vector3 gizmoPosWithOffset = transform.position + new Vector3(-0.5f, 0.0f, -0.5f);
+        Gizmos.DrawWireCube(gizmoPosWithOffset, new Vector3(gridScale.x, 0, gridScale.y));
         foreach(Vector3 pos in gridPositions2D)
         {
            // Handles.DrawWireCube(pos, new Vector3(gridSize-padding,0.0f, gridSize - padding));

@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour
     [SerializeField] int initiative;
     [SerializeField] int maxAP;
     [SerializeField] int availableAP;
+    [SerializeField] string unitName;
 
     // Start is called before the first frame update
     private void Awake()
@@ -36,6 +37,10 @@ public class Unit : MonoBehaviour
     public void ResetAP()
     {
         availableAP = maxAP;
+    }
+    public string GetName()
+    {
+        return unitName;
     }
 
 }

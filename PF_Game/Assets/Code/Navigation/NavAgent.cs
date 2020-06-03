@@ -86,5 +86,9 @@ public class NavAgent : MonoBehaviour
         }
 
     }
+    public Vector3 GetFacingDirection()
+    {
+        return facingDirection;
+    }
  
 }

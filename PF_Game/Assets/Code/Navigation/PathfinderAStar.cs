@@ -234,13 +234,21 @@ public class PathfinderAStar : MonoBehaviour
         }
         return neighbours;
     }
-    List<Vector3> SearchCardinalDirections(Node searchCenter) //Seach NSEW of node. If there is not a node in those locations, add the corresponding diagonal neighbour coordinate to the skip list.
+
+    /*GENERATE SKIP LIST
+     * The skip list solves for corners by limiting the neighbour nodes this node has access to. 
+     * If the grid does not contain a node in the cardinal directions, the corresponding diagonal neghbours are added to the skip list. This means the path generated wont cut through corners with meshes on them
+     *The second thing it does is check for walls or obstacles between nodes that would otherwise be neighbours.
+     * If a cardinal neighbour exists, proceed with a ray cast from the search center to the neighbour. If it returns true, add that neighbour, and any corresponding diagaonals to the skip list.
+     */ 
+    List<Vector3> SearchCardinalDirections(Node searchCenter)
     {
         List<Vector3> skipNeighbours = new List<Vector3>();
 
         int searchCenterPosX = (int)searchCenter.GetGridPosition().x;
         int searchCenterPosY = (int)searchCenter.GetGridPosition().y;
         int searchCenterPosZ = (int)searchCenter.GetGridPosition().z;
+        
         //check forward
         Vector3 searchCoordForward = new Vector3(searchCenterPosX, searchCenterPosY, searchCenterPosZ+1);
         //check backward
@@ -255,29 +263,73 @@ public class PathfinderAStar : MonoBehaviour
         Vector3 forwardRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ + 1);
         Vector3 backLeft = new Vector3(searchCenterPosX - 1, searchCenterPosY, searchCenterPosZ - 1);
         Vector3 backRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ - 1);
-        
+
+        Vector3 rayCastSource = searchCenter.GetGridPosition() + new Vector3(0, 0.25f, 0);
+
+
+
+        //CHECK FORWARD
         if (!grid.ContainsKey(searchCoordForward))
         {
             skipNeighbours.Add(forwardLeft);
             skipNeighbours.Add(forwardRight);
+            
         }
+        if (CheckForObstructions(rayCastSource, Vector3.forward))
+        {
+            Debug.Log("Something Forward");
+            skipNeighbours.Add(searchCoordForward);
+            skipNeighbours.Add(forwardLeft);
+            skipNeighbours.Add(forwardRight);
+        }
+
+        //CHECK BACKWARDS
         if (!grid.ContainsKey(searchCoordBack))
         {
             skipNeighbours.Add(backLeft);
             skipNeighbours.Add(backRight);
         }
+        if (CheckForObstructions(rayCastSource, Vector3.back))
+        {
+            skipNeighbours.Add(backLeft);
+            skipNeighbours.Add(backRight);
+            skipNeighbours.Add(searchCoordBack);
+        }
+
+        //Check LEFT
         if (!grid.ContainsKey(searchCoordLeft))
         {
             skipNeighbours.Add(forwardLeft);
             skipNeighbours.Add(backLeft);
         }
+        if (CheckForObstructions(rayCastSource, Vector3.left))
+        {
+            skipNeighbours.Add(forwardLeft);
+            skipNeighbours.Add(backLeft);
+            skipNeighbours.Add(searchCoordLeft);
+        }
+
+        //CHECK RIGHT
         if (!grid.ContainsKey(searchCoordRight))
         {
             skipNeighbours.Add(backRight);
             skipNeighbours.Add(forwardRight);
         }
+        if (CheckForObstructions(rayCastSource, Vector3.right))
+        {
+            skipNeighbours.Add(backRight);
+            skipNeighbours.Add(forwardRight);
+            skipNeighbours.Add(searchCoordRight);
+        }
 
-        
+
+
         return skipNeighbours;
+    }
+    bool CheckForObstructions(Vector3 source,Vector3 direction)
+    {
+        bool isObstructed = Physics.Raycast(source, direction, gridSize);
+        
+        return isObstructed;
     }
 }
