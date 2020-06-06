@@ -10,6 +10,21 @@ public class PathfinderAStar : MonoBehaviour
     enum NodeGenMode {CaptureExisting, SampleWalkable}
     [SerializeField] NodeGenMode nodeGenMode = new NodeGenMode();
     float gridSize = 1.0f;
+
+    //Data structures for skip neighbours
+    List<Vector3> skipNeighbours = new List<Vector3>();
+
+    //Clockwise starting at forward and ending at forward left.
+    Vector3 [] searchGrid = new[] {
+        new Vector3(0f,0f,1f),//0 Forward
+        new Vector3(1f,0f,1f),//1 FR
+        new Vector3(1f,0f,0f),//2 Right
+        new Vector3(1f,0f,-1f),//3 BR
+        new Vector3(0f,0f,-1f),//4 Back
+        new Vector3(-1f,0f,-1f),//5 BL
+        new Vector3(-1f,0f,0f),//6 Left
+        new Vector3 (-1f,0f,1f)//7 FL
+    };
     
 
 
@@ -197,159 +212,106 @@ public class PathfinderAStar : MonoBehaviour
     }
     public List<Node> GetNeighbours(Node searchCenter)
     {
-        List<Vector3> skipNeighbours = SearchCardinalDirections(searchCenter);
+        /*PSEUDO
+         * Check to see if the node is a link. If it is, pull neighbours from that.
+         * If it is NOT a link, continue with rest of check
+         * Diagonals are not available unless one of their flanking cardinals is available.
+         * To check for this, we generate a list of viable cardinal candidates.
+         * Loop-First check to see if any of the 4 cardinals are in the dictionary. 
+         * If yes, check to see if it is obstructed by a wall or something with a raycast.
+         * If not, it is a neighbour. Add it to the neighbour list and set the direction flag to be true.
+         * 
+         * New loop for the 4 diagonals
+         * outside of the loop we run a block of ifs to check the diagonals.
+         * Is diagonal in grid?
+         * If yes, are both parent cardinals available?
+         * if yes, is there an obstacle on it? (raycast)
+         * if no, it is a neighbour.
+         * 
+         * 
+         */
+
 
         List<Node> neighbours = new List<Node>();
-
-        for(int x= -1; x <= 1; x++)
+        if (searchCenter.isLink)
         {
-            for(int y = -1; y <= 1; y++)
+            List<Vector3> linkedNodeCoords = searchCenter.GetLinkedNeighbourCoords();
+            foreach (Vector3 linkedCoord in linkedNodeCoords)
             {
-                if (x == 0 && y == 0)
-                {
-                    continue;
-                }
-                else
-                {
-                    int neighbourXPos = ((int)searchCenter.GetGridPosition().x) + x;
-                    int neightbourYPos = ((int)searchCenter.GetGridPosition().z) + y;
-                    int searchHeight = (int)searchCenter.GetGridPosition().y;
+                neighbours.Add(grid[linkedCoord]);
+            }
 
-                    Vector3 neighbourCoordinate = new Vector3(neighbourXPos, searchHeight, neightbourYPos);
-                    if (searchCenter.isLink)
-                    {
-                        List<Vector3> linkedNodeCoords = searchCenter.GetLinkedNeighbourCoords();
-                        foreach(Vector3 linkedCoord in linkedNodeCoords)
-                        {
-                           neighbours.Add(grid[linkedCoord]);
-                        }
-                    }
-                    if (grid.ContainsKey(neighbourCoordinate)&&!skipNeighbours.Contains(neighbourCoordinate))
-                    {
-                        neighbours.Add(grid[neighbourCoordinate]);
-                    }
+        }
+        Vector3 searchCenterPosition = searchCenter.GetGridPosition();
+        Vector3 rayCastSource = searchCenterPosition + new Vector3(0, 0.25f, 0);
+        //iterate through all cardinals. index 0,2,4,6 of search grid array
+        for (int c = 0; c < 8; c = c + 2)
+        {
+            Vector3 candidate = searchCenterPosition + searchGrid[c];
+            if (grid.ContainsKey(candidate))
+            {
+                //Cardinal is in dictionary, check for obstacles.
 
+                if (!CheckForObstructions(rayCastSource, searchGrid[c]))
+                {
+                    //if there is no obstacle, add to neighbours
+                    neighbours.Add(grid[candidate]);
                 }
             }
         }
+        //Iterate through diagonals
+        for (int d = 1; d < 8; d = d + 2)
+        {
+            Vector3 candidate = searchCenterPosition + searchGrid[d];
+            if (grid.ContainsKey(candidate))
+            {
+                switch (d)
+                {
+                    case 1://FR
+                        if (grid.ContainsKey(searchGrid[0]) && grid.ContainsKey(searchGrid[2]))
+                        {
+                            if (!CheckForObstructions(rayCastSource, searchGrid[d]))
+                            {
+                                neighbours.Add(grid[candidate]);
+                            }
+
+                        }
+                        break;
+                    case 3://BR
+                        if (grid.ContainsKey(searchGrid[4]) && grid.ContainsKey(searchGrid[2]))
+                        {
+                            if (!CheckForObstructions(rayCastSource, searchGrid[d]))
+                            {
+                                neighbours.Add(grid[candidate]);
+                            }
+
+                        }
+                        break;
+                    case 5://BL
+                        if (grid.ContainsKey(searchGrid[4]) && grid.ContainsKey(searchGrid[6]))
+                        {
+                            if (!CheckForObstructions(rayCastSource, searchGrid[d]))
+                            {
+                                neighbours.Add(grid[candidate]);
+                            }
+
+                        }
+                        break;
+                    case 7://FL
+                        if (grid.ContainsKey(searchGrid[0]) && grid.ContainsKey(searchGrid[6]))
+                        {
+                            if (!CheckForObstructions(rayCastSource, searchGrid[d]))
+                            {
+                                neighbours.Add(grid[candidate]);
+                            }
+
+                        }
+                        break;
+                }
+            }
+        }
+
         return neighbours;
-    }
-
-    /*GENERATE SKIP LIST
-     * The skip list solves for corners by limiting the neighbour nodes this node has access to. 
-     * If the grid does not contain a node in the cardinal directions, the corresponding diagonal neghbours are added to the skip list. This means the path generated wont cut through corners with meshes on them
-     *The second thing it does is check for walls or obstacles between nodes that would otherwise be neighbours.
-     * If a cardinal neighbour exists, proceed with a ray cast from the search center to the neighbour. If it returns true, add that neighbour, and any corresponding diagaonals to the skip list.
-     */ 
-    List<Vector3> SearchCardinalDirections(Node searchCenter)
-    {
-        List<Vector3> skipNeighbours = new List<Vector3>();
-
-        int searchCenterPosX = (int)searchCenter.GetGridPosition().x;
-        int searchCenterPosY = (int)searchCenter.GetGridPosition().y;
-        int searchCenterPosZ = (int)searchCenter.GetGridPosition().z;
-        
-        //check forward
-        Vector3 searchCoordForward = new Vector3(searchCenterPosX, searchCenterPosY, searchCenterPosZ+1);
-        //check backward
-        Vector3 searchCoordBack = new Vector3(searchCenterPosX, searchCenterPosY, searchCenterPosZ-1);
-        //check left
-        Vector3 searchCoordLeft = new Vector3(searchCenterPosX-1, searchCenterPosY, searchCenterPosZ);
-        //check right
-        Vector3 searchCoordRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ);
-
-
-        Vector3 forwardLeft = new Vector3(searchCenterPosX - 1,searchCenterPosY,searchCenterPosZ+1);
-        Vector3 forwardRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ + 1);
-        Vector3 backLeft = new Vector3(searchCenterPosX - 1, searchCenterPosY, searchCenterPosZ - 1);
-        Vector3 backRight = new Vector3(searchCenterPosX + 1, searchCenterPosY, searchCenterPosZ - 1);
-
-        Vector3 rayCastSource = searchCenter.GetGridPosition() + new Vector3(0, 0.25f, 0);
-
-
-
-        //CHECK FORWARD
-        if (!grid.ContainsKey(searchCoordForward))
-        {
-            skipNeighbours.Add(forwardLeft);
-            skipNeighbours.Add(forwardRight);
-            
-        }
-        if (CheckForObstructions(rayCastSource, Vector3.forward))
-        {
-            Debug.Log("Something Forward");
-            skipNeighbours.Add(searchCoordForward);
-            skipNeighbours.Add(forwardLeft);
-            skipNeighbours.Add(forwardRight);
-        }
-
-        //CHECK BACKWARDS
-        if (!grid.ContainsKey(searchCoordBack))
-        {
-            skipNeighbours.Add(backLeft);
-            skipNeighbours.Add(backRight);
-        }
-        if (CheckForObstructions(rayCastSource, Vector3.back))
-        {
-            skipNeighbours.Add(backLeft);
-            skipNeighbours.Add(backRight);
-            skipNeighbours.Add(searchCoordBack);
-        }
-
-        //Check LEFT
-        if (!grid.ContainsKey(searchCoordLeft))
-        {
-            skipNeighbours.Add(forwardLeft);
-            skipNeighbours.Add(backLeft);
-        }
-        if (CheckForObstructions(rayCastSource, Vector3.left))
-        {
-            skipNeighbours.Add(forwardLeft);
-            skipNeighbours.Add(backLeft);
-            skipNeighbours.Add(searchCoordLeft);
-        }
-
-        //CHECK RIGHT
-        if (!grid.ContainsKey(searchCoordRight))
-        {
-            skipNeighbours.Add(backRight);
-            skipNeighbours.Add(forwardRight);
-        }
-        if (CheckForObstructions(rayCastSource, Vector3.right))
-        {
-            skipNeighbours.Add(backRight);
-            skipNeighbours.Add(forwardRight);
-            skipNeighbours.Add(searchCoordRight);
-        }
-
-        /*CHECK DIAGONALS-Raycast only. 
-        In some cases, standing on an outside corner of a bulding for example, checking cardinal directions for nodes and raycast is not sufficient as it all returns false (as it should)
-        Need to also search diagonals with raycast for corners
-        */
-        //ForwardLeft
-        if (CheckForObstructions(rayCastSource,new Vector3(-1, 0, 1)))
-        {
-            skipNeighbours.Add(forwardLeft);
-        }
-        //Forward Right
-        if(CheckForObstructions(rayCastSource, new Vector3(1, 0, 1)))
-        {
-            skipNeighbours.Add(forwardRight);
-        }
-        //Back Right
-        if (CheckForObstructions(rayCastSource, new Vector3(1, 0, -1)))
-        {
-            skipNeighbours.Add(backRight);
-        }
-        //Back Left
-        if (CheckForObstructions(rayCastSource, new Vector3(-1, 0, -1)))
-        {
-            skipNeighbours.Add(backLeft);
-        }
-
-
-
-        return skipNeighbours;
     }
     bool CheckForObstructions(Vector3 source,Vector3 direction)
     {
