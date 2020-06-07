@@ -29,9 +29,9 @@ public class CameraController : MonoBehaviour
     Vector3 smoothDampVelocity = Vector3.zero;
     [SerializeField] float rotationSmoothTime = 0.12f;
     Vector3 rotationSmoothVelocity;
-    float camFollowDist;
-    [SerializeField] Vector2 camFollowDistRange = new Vector2(1.0f, 10.0f);
-    [SerializeField] float zoomStep = 0.5f;
+    [SerializeField]float camFollowDist;
+    //[SerializeField] Vector2 camFollowDistRange = new Vector2(1.0f, 10.0f);
+    //[SerializeField] float zoomStep = 0.5f;
     
 
     Camera mainCam;
@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
     }
     private void Start()
     {
-        camFollowDist = 6.0f;
+        
     }
    
 //Leave out the PoV mode for now.
@@ -70,6 +70,7 @@ public class CameraController : MonoBehaviour
         Vector3 camPos = camAnchor.position;
         
         //Strat cam controls.
+        //ToDo-Reintroduce corner scroll spin and edge scroll
         //KEYBOARD CONTROLS
         if (Input.GetKey("w"))
         {
@@ -100,7 +101,9 @@ public class CameraController : MonoBehaviour
         }
 
         //Scroll Wheel Zoom
-        if(Input.GetAxis("Mouse ScrollWheel") > 0.0f)
+        //Scroll wheel is getting used for elevationchange. 
+        /*
+         * if(Input.GetAxis("Mouse ScrollWheel") > 0.0f)
         {
             
             camFollowDist -= zoomStep;
@@ -111,6 +114,7 @@ public class CameraController : MonoBehaviour
             camFollowDist += zoomStep;
         }
         camFollowDist = Mathf.Clamp(camFollowDist, camFollowDistRange.x, camFollowDistRange.y);
+        */
         
 
 
@@ -134,6 +138,7 @@ public class CameraController : MonoBehaviour
 
     IEnumerator MoveCamera (object[] parameters)
     {
+        Debug.Log("Ie");
         Transform moveDestination = (Transform)parameters[0];
         float timeCount = 0.0f;
 
@@ -150,5 +155,15 @@ public class CameraController : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
+    }
+    public void UpdateElevationLevel(int level, float elevationStep)
+    {
+
+        Transform destination = transform;
+        destination.position = new Vector3(transform.position.x,0.0f,transform.position.z) + new Vector3(0,elevationStep*level,0);
+        
+        StopCoroutine("MoveCamera");
+        object[] parameters = new object[1] { destination};
+        StartCoroutine("MoveCamera", parameters);
     }
 }

@@ -23,7 +23,7 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField] GameState currentGameState = new GameState();
     [SerializeField] GameState startingGameState = new GameState();
 
-    MultiModeCamera mmCam;
+    
     CameraController ccCam;
 
     //need an enum for game state
@@ -32,7 +32,7 @@ public class GameStateHandler : MonoBehaviour
     private void Awake()
     {
         SetGameState(startingGameState);
-        mmCam = GameObject.FindObjectOfType<MultiModeCamera>();
+        
         ccCam = GameObject.FindObjectOfType<CameraController>();
 
     }
