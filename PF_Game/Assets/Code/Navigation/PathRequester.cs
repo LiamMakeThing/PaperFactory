@@ -17,6 +17,7 @@ public class PathRequester : MonoBehaviour
     Dictionary<int, Vector3> bridgePositions = new Dictionary<int, Vector3>();
 
     Unit currentUnit;
+    Vector3 targetPosition;
 
 
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class PathRequester : MonoBehaviour
         pathRenderer = GetComponent<PathRenderer>();
         pathVisualizer = GetComponent<PathVisualizer>();
         unitHandler = GameObject.FindObjectOfType<CurrentUnitHandler>();
+        
 
     }
 
@@ -41,15 +43,23 @@ public class PathRequester : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                Vector3 tempPos = hit.transform.position;
-                if (hit.transform.GetComponent<Node>())
+                //Vector3 tempPos = hit.transform.position;
+                Vector3 hitLocation = hit.point;
+                if (pathFinder.GetNodeFromGridPosition(hitLocation) != null)
+                    
+
+                
+                //if (hit.transform.GetComponent<Node>())
                 {
+                    targetPosition = pathFinder.GetNodeFromGridPosition(hitLocation).GetGridPosition();
+                    UpdateDestinationCursor(targetPosition, true);
+                    //Update the elevation controller with the ypos of the destination cursor. 
+                    
+                    
 
-                    UpdateDestinationCursor(tempPos, true);
-
-                    if (endPosition != tempPos)
+                    if (endPosition != targetPosition)
                     {
-                        endPosition = tempPos;
+                        endPosition = targetPosition;
                         RequestPath();
                     }
 
@@ -63,7 +73,7 @@ public class PathRequester : MonoBehaviour
                 {
                     if (isDestinationCursorActive)
                     {
-                        UpdateDestinationCursor(tempPos, false);
+                        UpdateDestinationCursor(targetPosition, false);
                     }
 
                 }

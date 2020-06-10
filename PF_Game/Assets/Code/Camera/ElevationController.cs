@@ -47,28 +47,36 @@ public class ElevationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") < 0.0f)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0.0f)
         {
             SetElevationLevel(curElevationLevel-1);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") > 0.0f)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") < 0.0f)
         {
             SetElevationLevel(curElevationLevel+1);
         }
     }
 
+    public int GetLevelFromYPos(float yPos)
+    {
+        int level = Mathf.FloorToInt(yPos / elevationStep);
+        return level;
+    }
     public void SetElevationLevel(int level)
     {
-
-        //when switching to new unit, should update elevation to units level.
-        if(level>elevationLevels.x-1 && level < elevationLevels.y+1)
+        if (level != curElevationLevel)
         {
-            
-            curElevationLevel = level;
-            ccCam.UpdateElevationLevel(curElevationLevel, elevationStep);
-            UpdateMeshVisByElevationLevel(curElevationLevel);
-            Debug.Log("ElevationUpdate");
+            //when switching to new unit, should update elevation to units level.
+            if (level > elevationLevels.x - 1 && level < elevationLevels.y + 1)
+            {
+
+                curElevationLevel = level;
+                ccCam.UpdateElevationLevel(curElevationLevel, elevationStep);
+                UpdateMeshVisByElevationLevel(curElevationLevel);
+                Debug.Log("ElevationUpdate");
+            }
         }
+        
         
     }
     public int GetElevationLevel()
@@ -89,18 +97,11 @@ public class ElevationController : MonoBehaviour
          * Yes? Add it
          * Update min and max elevation levels
          */
-         
-        
         //Collect everything
         lvl0Objects = GameObject.FindGameObjectsWithTag("Level0");
         Debug.Log(lvl0Objects.Length.ToString() + " meshes found in lvl0");
         lvl1Objects = GameObject.FindGameObjectsWithTag("Level1");
         Debug.Log(lvl1Objects.Length.ToString() + " meshes found in lvl1");
-
-
-      
-
-
     }
     void UpdateMeshVisByElevationLevel(int level)
     {
@@ -144,10 +145,16 @@ public class ElevationController : MonoBehaviour
         }
         foreach (GameObject go in arrayToUse)
         {
+
             MeshRenderer[] meshR = go.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer mr in meshR)
             {
                 mr.enabled = state;
+            }
+            Collider[] colliders = go.GetComponentsInChildren<Collider>();
+            foreach(Collider c in colliders)
+            {
+                c.enabled = state;
             }
         }
     }

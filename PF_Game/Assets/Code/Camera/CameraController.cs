@@ -18,7 +18,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] float camPitch = 60.0f;
     float camYaw;
     float camRoll;
-    [SerializeField] float travelSpeed = 0.125f;
+    [SerializeField] float travelSpeedUnitFocus = 0.125f;
+    [SerializeField] float travelSpeedElevationChange = 0.125f;
 
 
     [SerializeField] float camRotateSpeed = 125.0f;
@@ -54,17 +55,18 @@ public class CameraController : MonoBehaviour
         centerOfMassTransform = currentUnit.stratCamTarget;
 
         
-        camAnchor.SetParent(centerOfMassTransform);
-        Transform destination = centerOfMassTransform;
+        //camAnchor.SetParent(centerOfMassTransform);
+        Vector3 destination = centerOfMassTransform.position;
         //NEED TO USE A STRING INVOKE SO WE CAN INTERRUPT IT. 
 
 
         StopCoroutine("MoveCamera");
-        object[] parameters = new object[1] { destination};
+        object[] parameters = new object[2] { destination,travelSpeedUnitFocus};
         StartCoroutine("MoveCamera",parameters);
         //transform.position = centerOfMassTransform.position;
 
     }
+
     private void LateUpdate()
     {
         Vector3 camPos = camAnchor.position;
@@ -136,22 +138,23 @@ public class CameraController : MonoBehaviour
         mainCam.transform.position = camAnchor.position - camFollowDist * mainCam.transform.forward;
     }
 
-    IEnumerator MoveCamera (object[] parameters)
+    IEnumerator MoveCamera (object[] parameters)//only takes in vector3 position currently. Can use dotprodcut and transform forward later to get direction matching.
     {
-        Debug.Log("Ie");
-        Transform moveDestination = (Transform)parameters[0];
+        
+        Vector3 moveDestination = (Vector3)parameters[0];
+        float moveSpeed = (float)parameters[1];
         float timeCount = 0.0f;
 
         //will keep looping until distance is less than tolerance
         float distanceTolerance = 0.1f;
-        float distanceToDestination = Vector3.Distance(camAnchor.position, moveDestination.position);
+        float distanceToDestination = Vector3.Distance(camAnchor.position, moveDestination);
 
         while (distanceToDestination > distanceTolerance)
         {
-            distanceToDestination = Vector3.Distance(camAnchor.position, moveDestination.position);
-            camAnchor.position = Vector3.Slerp(camAnchor.position, moveDestination.position, timeCount);
+            distanceToDestination = Vector3.Distance(camAnchor.position, moveDestination);
+            camAnchor.position = Vector3.Slerp(camAnchor.position, moveDestination, timeCount);
 
-            timeCount = timeCount + Time.deltaTime * travelSpeed;
+            timeCount = timeCount + Time.deltaTime * moveSpeed;
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -159,11 +162,11 @@ public class CameraController : MonoBehaviour
     public void UpdateElevationLevel(int level, float elevationStep)
     {
 
-        Transform destination = transform;
-        destination.position = new Vector3(transform.position.x,0.0f,transform.position.z) + new Vector3(0,elevationStep*level,0);
+        float yPos = level * elevationStep;
+        Vector3 destination = new Vector3(transform.position.x, yPos, transform.position.z);
         
+        object[] parameters = new object[2] { destination,travelSpeedElevationChange };
         StopCoroutine("MoveCamera");
-        object[] parameters = new object[1] { destination};
         StartCoroutine("MoveCamera", parameters);
     }
 }
