@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 623961591600888444}
   - component: {fileID: 6598979247645148805}
   - component: {fileID: 1944112938354229632}
+  - component: {fileID: 6184996668786646493}
   m_Layer: 0
   m_Name: SM_Layout_Block_S
   m_TagString: Untagged
@@ -91,3 +92,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332359193b1787b4e9fddfe949c96188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridSnapSize: 0.5
+  rotSnapSize: 90
+--- !u!65 &6184996668786646493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875321028227789401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
