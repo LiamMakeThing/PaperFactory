@@ -5,6 +5,8 @@ using UnityEngine;
 
 
 
+
+
 public class ElevationController : MonoBehaviour
 {
     /*mouse scroll to chnage floors
@@ -13,7 +15,7 @@ public class ElevationController : MonoBehaviour
     [SerializeField] int curElevationLevel;
     [SerializeField] Vector2Int elevationLevels = new Vector2Int();
     CameraController ccCam;
-    float elevationStep = 4.0f;
+    float elevationStep = 6.0f;
     //PresetElevations. TODO-Make this repeatable, dynamically scalable and abstracted out from here.
     //TODO: Get this handled and stored before the game runs with the editor with a separate class on the elevation manager. Should find and sort before game runs and provide feedback to level design when placing.
 
@@ -98,64 +100,103 @@ public class ElevationController : MonoBehaviour
          * Update min and max elevation levels
          */
         //Collect everything
+
         lvl0Objects = GameObject.FindGameObjectsWithTag("Level0");
-        Debug.Log(lvl0Objects.Length.ToString() + " meshes found in lvl0");
+        
         lvl1Objects = GameObject.FindGameObjectsWithTag("Level1");
-        Debug.Log(lvl1Objects.Length.ToString() + " meshes found in lvl1");
+
+        lvl2Objects = GameObject.FindGameObjectsWithTag("Level2");
+        
     }
+
+
+  /*
+   * New data structure. Floor. Floor has a string name to match with tags, a bool to check state of vis and a list of levelkitbase.
+   * There is a list of floors, the floors
+     * 3. Overpopulated lists, some of which may not be used.
+     * Scroll min max is set manually
+     * New elevation level. CHeck the status of all lower levels. If they are off, turn them on. Check all the ones above, if they are on, turn them off
+     */ 
     void UpdateMeshVisByElevationLevel(int level)
     {
-        if(level == 0)
+        
+        switch (level)
         {
-            if (!lvl0VisState)
-            {
-                ToggleElevationVis(0, true);
-                lvl0VisState = true;
-            }
-            if (lvl1VisState)
-            {
-                ToggleElevationVis(1, false);
-                lvl1VisState = false;
-            }
-        }
-        else if (level ==1)
-        {
-            if (!lvl1VisState)
-            {
-                ToggleElevationVis(1, true);
-                lvl1VisState = true;
-            }
-            if (!lvl0VisState)
-            {
-                ToggleElevationVis(0, true);
-                lvl0VisState = true;
-            }
+            case 0:
+                if (!lvl0VisState)//if lvl0 is off, turn it on
+                {
+                    ToggleElevationVis(0, true);
+                    lvl0VisState = true;
+                }
+                if (lvl1VisState)//if lvl1 is on, turn it off
+                {
+                    ToggleElevationVis(1, false);
+                    lvl1VisState = false;
+                }
+                if(lvl2VisState)//if lvl2 is on, turn if off
+                {
+                    ToggleElevationVis(2, false);
+                    lvl2VisState = false;
+                }
+                break;
+            case 1:
+                if (!lvl0VisState)//if lvl0 is off, turn it on
+                {
+                    ToggleElevationVis(0, true);
+                    lvl0VisState = true;
+                }
+                if (!lvl1VisState)//if lvl1 is off, turn it on
+                {
+                    ToggleElevationVis(1, true);
+                    lvl1VisState = true;
+                }
+                if (lvl2VisState)//if lvl2 is on, turn if off
+                {
+                    ToggleElevationVis(2, false);
+                    lvl2VisState = false;
+                }
+                break;
+            case 2:
+                if (!lvl0VisState)//if lvl0 is off, turn it on
+                {
+                    ToggleElevationVis(0, true);
+                    lvl0VisState = true;
+                }
+                if (!lvl1VisState)//if lvl1 is off, turn it on
+                {
+                    ToggleElevationVis(1, true);
+                    lvl1VisState = true;
+                }
+                if (!lvl2VisState)//if lvl2 is off, turn if on
+                {
+                    ToggleElevationVis(2, true);
+                    lvl2VisState = true;
+                }
+                break;
+            default:
+                break;
         }
     }
     void ToggleElevationVis(int level, bool state)
     {
         GameObject[] arrayToUse = new GameObject[0];
-        if(level == 0)
+       
+        switch (level)
         {
-            arrayToUse = lvl0Objects;
-           
-        }else if(level == 1)
-        {
-            arrayToUse = lvl1Objects;
+            case 0:
+                arrayToUse = lvl0Objects;
+                
+                break;
+            case 1:
+                arrayToUse = lvl1Objects;
+                break;
+            case 2:
+                arrayToUse = lvl2Objects;
+                break;
         }
-        foreach (GameObject go in arrayToUse)
+        foreach(GameObject go in arrayToUse)
         {
-
-            MeshRenderer[] meshR = go.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer mr in meshR)
-            {
-                mr.enabled = state;
-            }
-            Collider[] colliders = go.GetComponentsInChildren<Collider>();
-            foreach(Collider c in colliders)
-            {
-                c.enabled = state;
-            }
+            go.GetComponent<LevelKitBase>().ToggleVis(state, false);
         }
     }
 }

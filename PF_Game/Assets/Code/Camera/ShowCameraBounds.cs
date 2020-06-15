@@ -18,6 +18,7 @@ public class ShowCameraBounds : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(cameraBounds.x, 0.0f, cameraBounds.y));
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(cameraBounds.x, 10.0f, cameraBounds.y));
     }
 }

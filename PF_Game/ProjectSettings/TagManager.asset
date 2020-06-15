@@ -7,6 +7,7 @@ TagManager:
   - Walkable
   - Level1
   - Level0
+  - Level2
   layers:
   - Default
   - TransparentFX

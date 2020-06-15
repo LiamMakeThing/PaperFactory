@@ -31,8 +31,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] float rotationSmoothTime = 0.12f;
     Vector3 rotationSmoothVelocity;
     [SerializeField]float camFollowDist;
-    //[SerializeField] Vector2 camFollowDistRange = new Vector2(1.0f, 10.0f);
-    //[SerializeField] float zoomStep = 0.5f;
+
+    CameraOcclusion camOcclusion;
     
 
     Camera mainCam;
@@ -41,6 +41,7 @@ public class CameraController : MonoBehaviour
         camAnchor = this.transform;
         camPivot = transform.Find("CamPivot");
         mainCam = Camera.main;
+        camOcclusion = GetComponent<CameraOcclusion>();
     }
     private void Start()
     {
@@ -53,6 +54,9 @@ public class CameraController : MonoBehaviour
     {
         currentUnit = unit;
         centerOfMassTransform = currentUnit.stratCamTarget;
+        //UPDATE Camera Occlusion with new focus.
+        camOcclusion.UpdateViewTarget(centerOfMassTransform.position);
+
 
         
         //camAnchor.SetParent(centerOfMassTransform);
@@ -157,6 +161,7 @@ public class CameraController : MonoBehaviour
             timeCount = timeCount + Time.deltaTime * moveSpeed;
             yield return new WaitForSeconds(0.01f);
         }
+        
 
     }
     public void UpdateElevationLevel(int level, float elevationStep)
