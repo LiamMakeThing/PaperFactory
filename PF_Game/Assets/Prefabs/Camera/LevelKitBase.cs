@@ -35,7 +35,7 @@ public class LevelKitBase : MonoBehaviour
         else
         {
             visHandle = gameObject;
-            //gameObject.SetActive(state);
+            
         }
         //visHandle.SetActive(state);
         StopCoroutine("Fade");

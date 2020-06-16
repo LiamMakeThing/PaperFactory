@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5365825073466006885}
   - component: {fileID: 4179942983784213986}
   - component: {fileID: 3078016099615446803}
-  - component: {fileID: 987913289568247438}
+  - component: {fileID: 3425375945352043021}
   m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Walkable
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204600001024415981}
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.125, z: -0}
+  m_LocalPosition: {x: 0, y: -0.125, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 0.25}
   m_Children: []
   m_Father: {fileID: 3832483356504552867}
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &987913289568247438
+--- !u!65 &3425375945352043021
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,3 +153,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
   bottomSlice: {fileID: 0}
+  hasSlices: 0
+  toggleVisSpeed: 10

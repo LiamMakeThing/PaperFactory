@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5365825073466006885}
   - component: {fileID: 4179942983784213986}
   - component: {fileID: 3078016099615446803}
-  - component: {fileID: 987913289568247438}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &987913289568247438
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204600001024415981}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1323056117433274010
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +122,6 @@ GameObject:
   - component: {fileID: 4083474805934847680}
   - component: {fileID: 1741040584146343662}
   - component: {fileID: 3893854587262703338}
-  - component: {fileID: 824984243718482666}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -204,19 +189,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &824984243718482666
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323056117433274010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1349500272288820917
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +470,7 @@ GameObject:
   - component: {fileID: 3832483356504552867}
   - component: {fileID: -2159539460876592340}
   - component: {fileID: 6783553427276148067}
+  - component: {fileID: 2072008015653917695}
   m_Layer: 0
   m_Name: LO_Wall_Large
   m_TagString: Untagged
@@ -549,6 +522,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
   bottomSlice: {fileID: 0}
+  hasSlices: 0
+  toggleVisSpeed: 10
+--- !u!65 &2072008015653917695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106807901401731064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 6, z: 1}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &5345021436471646077
 GameObject:
   m_ObjectHideFlags: 0

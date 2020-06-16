@@ -45,6 +45,7 @@ public class PathRequester : MonoBehaviour
             {
                 //Vector3 tempPos = hit.transform.position;
                 Vector3 hitLocation = hit.point;
+                //TODO: Do a distance check to make sure we don't sample too long a path.
                 if (pathFinder.GetNodeFromGridPosition(hitLocation) != null)
                     
 

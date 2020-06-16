@@ -55,7 +55,7 @@ public class CameraController : MonoBehaviour
         currentUnit = unit;
         centerOfMassTransform = currentUnit.stratCamTarget;
         //UPDATE Camera Occlusion with new focus.
-        camOcclusion.UpdateViewTarget(centerOfMassTransform.position);
+        camOcclusion.UpdateViewTarget(unit.transform);
 
 
         

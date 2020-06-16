@@ -75,7 +75,6 @@ public class ElevationController : MonoBehaviour
                 curElevationLevel = level;
                 ccCam.UpdateElevationLevel(curElevationLevel, elevationStep);
                 UpdateMeshVisByElevationLevel(curElevationLevel);
-                Debug.Log("ElevationUpdate");
             }
         }
         
