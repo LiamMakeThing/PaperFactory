@@ -21,18 +21,28 @@ public class UnitSelector : MonoBehaviour
     {
         if (Input.GetButtonDown("LeftClick"))
         {
+            Debug.Log("Left click");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
+                Debug.Log("Physics hit");
                 if (hit.transform.GetComponent<Unit>())
                 {
+                    Debug.Log("unit hit");
                     Unit tempUnit = hit.transform.GetComponent<Unit>();
-                    if (tempUnit!=currentUnit||currentUnit==null)
+                    
+                    if (tempUnit.GetFaction() == Faction.Player)
                     {
-                        currentUnit = tempUnit;
-                        unitHandler.SetCurrentUnit(currentUnit);
+                        Debug.Log("Player faction hit");
+                        if (tempUnit != currentUnit)
+                        {
+
+                            currentUnit = tempUnit;
+                            unitHandler.SetCurrentUnit(currentUnit);
+                        }
                     }
+                    
                 }
             }
 

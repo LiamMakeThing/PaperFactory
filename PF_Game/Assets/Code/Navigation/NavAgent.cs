@@ -12,6 +12,7 @@ public class NavAgent : MonoBehaviour
     PathfinderAStar pathfinder;
     public Vector3 facingDirection;
     //is given a path and follows it.
+    [SerializeField] bool isFollowingPath;
 
     private void Awake()
     {
@@ -21,7 +22,10 @@ public class NavAgent : MonoBehaviour
     {
         
     }
-
+    public bool GetIsMoving()
+    {
+        return isFollowingPath;
+    }
 
 
     public void MoveNavAgent(List<Vector3> path)
@@ -36,8 +40,10 @@ public class NavAgent : MonoBehaviour
 
     IEnumerator BeginFollowingPath()
     {
+        isFollowingPath = true;
         //Path Received. Beginning movement
         yield return StartCoroutine(FollowPath());
+        isFollowingPath = false;
         //Path Complete
     }
     IEnumerator FollowPath()
@@ -48,6 +54,7 @@ public class NavAgent : MonoBehaviour
 
         while (true)
         {
+         
             if(transform.position == currentNodePos)
             {
                 //we have arrived at a location. At this point it will be either a node or an inserted bridge point. We need to check the former to see if it is visible by other units by accessing the node via the navgrid dictionary.

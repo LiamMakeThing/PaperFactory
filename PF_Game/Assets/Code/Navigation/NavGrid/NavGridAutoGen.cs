@@ -33,6 +33,11 @@ public class NavGridAutoGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Application.isPlaying)
+        {
+            return;
+        }
+        Debug.Log("Auto grid Sampling Positions");
         layerMask =~  LayerMask.GetMask("Unit");
         transform.position = RoundPosition(transform.position);
         ClearNodePositions();

@@ -17,7 +17,11 @@ public class PathRequester : MonoBehaviour
     Dictionary<int, Vector3> bridgePositions = new Dictionary<int, Vector3>();
 
     Unit currentUnit;
+    NavAgent currentNavAgent;
     Vector3 targetPosition;
+    [SerializeField] float maxDistanceToSample;
+    [SerializeField] float linearDistanceToTarget;
+
 
 
     // Start is called before the first frame update
@@ -36,9 +40,20 @@ public class PathRequester : MonoBehaviour
 
     void Update()
     {
+        currentUnit = unitHandler.GetCurrentUnit();
+        
         //only do this if it is the players turn
-        if (unitHandler.GetCurrentUnit().GetFaction() == Faction.Player)
+        if (currentUnit.GetFaction() == Faction.Player)
         {
+            currentNavAgent = currentUnit.GetComponent<NavAgent>();
+            if (currentNavAgent.GetIsMoving())
+            {
+                return;
+            }
+
+            startPosition = currentUnit.transform.position;
+            maxDistanceToSample = currentUnit.GetAvailableAP() + 2.0f;
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
@@ -60,8 +75,14 @@ public class PathRequester : MonoBehaviour
 
                     if (endPosition != targetPosition)
                     {
-                        endPosition = targetPosition;
-                        RequestPath();
+                        linearDistanceToTarget = Vector3.Distance(startPosition, targetPosition);
+                        if (linearDistanceToTarget < maxDistanceToSample)
+                        {
+                            endPosition = targetPosition;
+                            RequestPath();
+                        }
+                        return;
+                        
                     }
 
                     if (Input.GetButtonDown("LeftClick"))
@@ -87,8 +108,8 @@ public class PathRequester : MonoBehaviour
     {
         
         
-        currentUnit = unitHandler.GetCurrentUnit();
-        startPosition = currentUnit.transform.position;
+        
+        
         List<Node> rawPath =pathFinder.GetPath(startPosition, endPosition);
         finalPath = new List<Vector3>();
         finalPath = CleanUpPath(rawPath);
@@ -183,6 +204,7 @@ public class PathRequester : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(bridgePositions[key], 0.25f);
         }
+        Gizmos.DrawWireSphere(startPosition, maxDistanceToSample);
     }
 
 
