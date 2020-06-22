@@ -27,6 +27,7 @@ public class UnitSelector : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 Debug.Log("Physics hit");
+                Debug.Log(hit.transform.name);
                 if (hit.transform.GetComponent<Unit>())
                 {
                     Debug.Log("unit hit");

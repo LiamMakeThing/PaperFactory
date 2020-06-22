@@ -11,6 +11,7 @@ public class LevelKitBase : MonoBehaviour
     [SerializeField] bool hasSlices;
     GameObject visHandle;
     [SerializeField] float toggleVisSpeed = 10.0f;
+    [SerializeField] bool isFloor;
 
     private void Awake()
     {
@@ -37,6 +38,16 @@ public class LevelKitBase : MonoBehaviour
             visHandle = gameObject;
             
         }
+        /*
+        if (state)
+        {
+            visHandle.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+        }
+        else if (!state)
+        {
+            visHandle.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+        */
         //visHandle.SetActive(state);
         StopCoroutine("Fade");
         StartCoroutine("Fade", state);
@@ -68,8 +79,9 @@ public class LevelKitBase : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
 
-
-        
-
+    }
+    public bool GetIsFloor()
+    {
+        return isFloor;
     }
 }

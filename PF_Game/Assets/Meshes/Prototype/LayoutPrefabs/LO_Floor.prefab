@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSnapSize: 0.5
   rotSnapSize: 90
+  snapRotEnabled: 0
 --- !u!114 &699316827849076543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
   bottomSlice: {fileID: 0}
   hasSlices: 0
   toggleVisSpeed: 10
+  isFloor: 1
 --- !u!114 &2985372011710837012
 MonoBehaviour:
   m_ObjectHideFlags: 0

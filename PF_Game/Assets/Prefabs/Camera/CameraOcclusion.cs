@@ -13,16 +13,21 @@ public class CameraOcclusion : MonoBehaviour
     // Start is called before the first frame update
 
 
-    Transform cachedTarget;
+    [SerializeField] Transform cachedTarget;
     Transform curTargetTransform;
     Vector3 camPosCached;
     Vector3 camPosCurrent;
     bool activeCheck;
     ElevationController elevationContoller;
-    [SerializeField] List<LevelKitBase> curDetected = new List<LevelKitBase>();
-    [SerializeField]List<LevelKitBase> curHidden = new List<LevelKitBase>();
+    [SerializeField] List<LevelKitBase> curOverlapItems = new List<LevelKitBase>();
+    [SerializeField] List<LevelKitBase> curHidden = new List<LevelKitBase>();
     int curZoomFloor;
     int curTargetFloor;
+    Vector3 hitPos;
+    [SerializeField] float sphereOverlapRadius = 5.0f;
+    [SerializeField] float camPosTolerance = 0.5f;
+    
+    [SerializeField] bool hitDetected;
 
     private void Awake()
     {
@@ -41,7 +46,7 @@ public class CameraOcclusion : MonoBehaviour
         
         cachedTarget = targetT;
         //StopCoroutine("CameraOccCheck");
-        StartCoroutine("CameraOccCheck", 0.25f);
+        StartCoroutine("CameraOccCheck", 0.10f);
         
         //has camera moved? If yes, fire off the check again.
 
@@ -54,11 +59,17 @@ public class CameraOcclusion : MonoBehaviour
         
         while (activeCheck)
         {
+            /*The camera move damping means that the camera is moving slightly, after the input has ended. Which is good. However this means that the check is ongoing and takes a while to 'settle.' 
+             * Instead of using an "if different" check to fire off occludechecks, do a distance greater than tolerance check.
+             */
+
+
             
-            
-            //has the camera moved? if yes, do an occlude check
+
             camPosCurrent = Camera.main.transform.position;
-            if (camPosCurrent != camPosCached)
+            float camDist = Vector3.Distance(camPosCurrent, camPosCached);
+
+            if (camDist>camPosTolerance)
             {
                 // current floor is not the same as the target, dont do anything. Measn player is zooming in and out and taking direct control
                 curZoomFloor = elevationContoller.GetElevationLevel();
@@ -77,46 +88,65 @@ public class CameraOcclusion : MonoBehaviour
     }
     void OccludeCheck()
     {
-        Debug.Log("Starting Check");
-        Vector3 direction = (cachedTarget.position -camPosCached).normalized;
+        hitDetected = false;
+        
+        Vector3 direction = ((cachedTarget.position + new Vector3(0,1,0)) - camPosCached).normalized;
         float distance = Vector3.Distance(camPosCached, cachedTarget.position);
 
+        curOverlapItems = new List<LevelKitBase>();
 
-        curDetected.Clear();
         RaycastHit hit;
         if (Physics.Raycast(camPosCached, direction, out hit, distance))
         {
-            
-            if (hit.transform.GetComponentInParent<LevelKitBase>())
-            {
-                LevelKitBase curLevelKitHit = hit.transform.GetComponentInParent<LevelKitBase>();
-                Debug.Log("Hit Level Kit asset: " + curLevelKitHit.name);
-                if (!curDetected.Contains(curLevelKitHit))
-                {
-                    curDetected.Add(curLevelKitHit);
-                    if (!curHidden.Contains(curLevelKitHit))
-                    {
-                        curHidden.Add(curLevelKitHit);
-                        curLevelKitHit.ToggleVis(false, true);
-                    }
+            hitDetected = true;
+            hitPos = hit.point;
 
+            Collider[] overlappedColliders = Physics.OverlapSphere(hitPos,sphereOverlapRadius);
+            foreach(Collider c in overlappedColliders)
+            {
+                if (c.GetComponentInParent<LevelKitBase>())
+                {
+                    LevelKitBase tempKitAsset = c.GetComponentInParent<LevelKitBase>();
+                    //Check to make sure its not the floor under the current unit. Y pos is lower?
+                    if (tempKitAsset.GetIsFloor())
+                    {
+                        return;
+                    }
+                    if (!curOverlapItems.Contains(tempKitAsset))
+                    {
+                        curOverlapItems.Add(tempKitAsset);
+                    }
                 }
-                
             }
-            
         }
-        if (curHidden.Count>0)
+
+        //check to see what should be unhidden. (What is in hidden list that is not currently being overlapped)
+
+        if (curHidden.Count > 0)
         {
+
             for(int i = 0;i<curHidden.Count;i++)
             {
-                LevelKitBase kitPiece = curHidden[i];
-                if (!curDetected.Contains(kitPiece))
+                LevelKitBase curKitAsset = curHidden[i];
+                if (!curOverlapItems.Contains(curKitAsset))
                 {
-                    kitPiece.ToggleVis(true, true);
-                    curHidden.Remove(kitPiece);
+                    curHidden.Remove(curKitAsset);
+                    curKitAsset.ToggleVis(true, true);
                 }
             }
         }
+        foreach(LevelKitBase tempKitAsset in curOverlapItems)
+        {
+            if (!curHidden.Contains(tempKitAsset))
+            {
+                curHidden.Add(tempKitAsset);
+                tempKitAsset.ToggleVis(false, true);
+            }
+        }
+
+        
+    }
+
 
         /*See what is between you and camera.
          * Hidden and currently detected.
@@ -130,13 +160,22 @@ public class CameraOcclusion : MonoBehaviour
         
         */
 
-    }
+    
     private void OnDrawGizmos()
     {
+        float debugSphereRad = 0.0f;
         if (cachedTarget!=null)
         {
             Gizmos.DrawLine(camPosCached, cachedTarget.position);
         }
-        
+        if (hitDetected)
+        {
+            debugSphereRad = sphereOverlapRadius;
+        }else if (!hitDetected)
+        {
+            debugSphereRad = 0.0f;
+        }
+        Gizmos.DrawWireSphere(hitPos, debugSphereRad);
+
     }
 }

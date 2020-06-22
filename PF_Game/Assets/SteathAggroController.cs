@@ -16,6 +16,10 @@ public class SteathAggroController : MonoBehaviour
     void Start()
     {
         playerMesh = transform.Find("PlayerMesh");
+        staggroState = Staggro.neutral;
+        UpdateStaggro();
+
+
     }
 
     // Update is called once per frame

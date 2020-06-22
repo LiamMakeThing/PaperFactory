@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSnapSize: 0.5
   rotSnapSize: 90
+  snapRotEnabled: 0
 --- !u!114 &6783553427276148067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
   bottomSlice: {fileID: 0}
-  hasSlices: 0
+  hasSlices: 1
   toggleVisSpeed: 10
+  isFloor: 0
 --- !u!1 &5148787351221096226
 GameObject:
   m_ObjectHideFlags: 0

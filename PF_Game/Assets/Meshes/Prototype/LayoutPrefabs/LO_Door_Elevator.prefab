@@ -244,9 +244,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3832483356504552867}
   - component: {fileID: -2159539460876592340}
+  - component: {fileID: 436615945605306371}
   m_Layer: 0
   m_Name: LO_Door_Elevator
-  m_TagString: Untagged
+  m_TagString: Level0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,9 +282,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332359193b1787b4e9fddfe949c96188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSnapSize: 1
+  gridSnapSize: 0.5
   rotSnapSize: 90
   snapRotEnabled: 0
+--- !u!114 &436615945605306371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106807901401731064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d92d51e37dbfc489bcf0d0a75e4800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topSlice: {fileID: 0}
+  bottomSlice: {fileID: 0}
+  hasSlices: 0
+  toggleVisSpeed: 10
 --- !u!1 &4235557502158270780
 GameObject:
   m_ObjectHideFlags: 0
