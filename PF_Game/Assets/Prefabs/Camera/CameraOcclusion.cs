@@ -46,7 +46,7 @@ public class CameraOcclusion : MonoBehaviour
         
         cachedTarget = targetT;
         //StopCoroutine("CameraOccCheck");
-        StartCoroutine("CameraOccCheck", 0.10f);
+        StartCoroutine("CameraOccCheck", 0.025f);
         
         //has camera moved? If yes, fire off the check again.
 
@@ -108,14 +108,21 @@ public class CameraOcclusion : MonoBehaviour
                 {
                     LevelKitBase tempKitAsset = c.GetComponentInParent<LevelKitBase>();
                     //Check to make sure its not the floor under the current unit. Y pos is lower?
-                    if (tempKitAsset.GetIsFloor())
+                    if (!tempKitAsset.GetIsFloor())
                     {
-                        return;
+                      
+                            //check to see if the asset is closer to the camera than the target. 
+                            if (!curOverlapItems.Contains(tempKitAsset))
+                            {
+
+
+                                curOverlapItems.Add(tempKitAsset);
+
+
+                            }
+                        
                     }
-                    if (!curOverlapItems.Contains(tempKitAsset))
-                    {
-                        curOverlapItems.Add(tempKitAsset);
-                    }
+                    
                 }
             }
         }
@@ -161,7 +168,7 @@ public class CameraOcclusion : MonoBehaviour
         */
 
     
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         float debugSphereRad = 0.0f;
         if (cachedTarget!=null)

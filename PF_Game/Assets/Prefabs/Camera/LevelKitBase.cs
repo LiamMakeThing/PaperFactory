@@ -5,40 +5,23 @@ using UnityEngine;
 public class LevelKitBase : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject topSlice;
+    [SerializeField] Transform topSlice;
 
     [SerializeField] GameObject bottomSlice;
     [SerializeField] bool hasSlices;
-    GameObject visHandle;
+    Transform visHandle;
     [SerializeField] float toggleVisSpeed = 10.0f;
     [SerializeField] bool isFloor;
 
     private void Awake()
     {
-
-        if (hasSlices)
-        {
-            topSlice = transform.Find("Top").gameObject;
-
-            bottomSlice = transform.Find("Bottom").gameObject;
-        }
+        topSlice = transform.Find("Top");
+     
     }
     
     public void  ToggleVis(bool state, bool partial)
     {
-        //Fire off a coroutine. state for direction of fade, partial for if its the whole thing or just the top. To be used by the elevation manager.
-        if (hasSlices&&partial)
-        {
-            visHandle = topSlice;
-            //topSlice.SetActive(state);
-            
-        }
-        else
-        {
-            visHandle = gameObject;
-            
-        }
-        /*
+ 
         if (state)
         {
             visHandle.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
@@ -47,7 +30,7 @@ public class LevelKitBase : MonoBehaviour
         {
             visHandle.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         }
-        */
+        
         //visHandle.SetActive(state);
         StopCoroutine("Fade");
         StartCoroutine("Fade", state);
@@ -66,7 +49,7 @@ public class LevelKitBase : MonoBehaviour
             }
             else if (!state)
             {
-                targetScale = new Vector3(0.0f, 0.0f, 0.0f);
+                targetScale = new Vector3(1.0f, 0.0f, 1.0f);
             }
             while (curScale != targetScale)
             {
@@ -76,9 +59,14 @@ public class LevelKitBase : MonoBehaviour
                 visHandle.transform.localScale = Vector3.Slerp(visHandle.transform.localScale, targetScale, timeCount);
 
                 timeCount = timeCount + Time.deltaTime * toggleVisSpeed;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0075f);
             }
 
+    }
+    public Transform GetVisHandle()
+    {
+        visHandle = topSlice;
+        return visHandle;
     }
     public bool GetIsFloor()
     {

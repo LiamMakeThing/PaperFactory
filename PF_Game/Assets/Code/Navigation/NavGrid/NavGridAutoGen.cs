@@ -99,7 +99,7 @@ public class NavGridAutoGen : MonoBehaviour
     {
         return nodePositions;
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         float padding = 0.1f;
         Vector3 gizmoPosWithOffset = transform.position + new Vector3(-0.5f, 0.0f, -0.5f);

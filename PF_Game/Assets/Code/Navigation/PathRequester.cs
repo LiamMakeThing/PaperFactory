@@ -22,6 +22,8 @@ public class PathRequester : MonoBehaviour
     [SerializeField] float maxDistanceToSample;
     [SerializeField] float linearDistanceToTarget;
 
+    
+
 
 
     // Start is called before the first frame update
@@ -191,7 +193,7 @@ public class PathRequester : MonoBehaviour
     private void OnDrawGizmos()
     {
      //DRAW THE CLEANED UP PATH WITH POINTS AND LINES.
-     for (int i = 0; i < finalPath.Count; i++)
+        for (int i = 0; i < finalPath.Count; i++)
         {
             Gizmos.DrawSphere(finalPath[i], 0.25f);
             if ((i + 1) < finalPath.Count)
@@ -204,8 +206,11 @@ public class PathRequester : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(bridgePositions[key], 0.25f);
         }
-        Gizmos.DrawWireSphere(startPosition, maxDistanceToSample);
+
+        
     }
+
+    
 
 
 }
