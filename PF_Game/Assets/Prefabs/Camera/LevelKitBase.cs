@@ -7,7 +7,7 @@ public class LevelKitBase : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform topSlice;
 
-    [SerializeField] GameObject bottomSlice;
+    [SerializeField] Transform bottomSlice;
     [SerializeField] bool hasSlices;
     Transform visHandle;
     [SerializeField] float toggleVisSpeed = 10.0f;
@@ -16,6 +16,7 @@ public class LevelKitBase : MonoBehaviour
     private void Awake()
     {
         topSlice = transform.Find("Top");
+        bottomSlice = transform.Find("Bottom");
      
     }
     
@@ -63,10 +64,15 @@ public class LevelKitBase : MonoBehaviour
             }
 
     }
-    public Transform GetVisHandle()
+    public Transform GetTopSlice()
     {
         visHandle = topSlice;
         return visHandle;
+    }
+    public void ToggleKitAssetVisibility(bool state)
+    {
+        topSlice.gameObject.SetActive(state);
+        bottomSlice.gameObject.SetActive(state);
     }
     public bool GetIsFloor()
     {

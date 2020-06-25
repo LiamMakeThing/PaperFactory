@@ -19,13 +19,13 @@ public class ElevationController : MonoBehaviour
     //PresetElevations. TODO-Make this repeatable, dynamically scalable and abstracted out from here.
     //TODO: Get this handled and stored before the game runs with the editor with a separate class on the elevation manager. Should find and sort before game runs and provide feedback to level design when placing.
 
-    [SerializeField] GameObject[] lvl0Objects;
+    [SerializeField] List<FacingVisGroup> lvl0VisGroup = new List<FacingVisGroup>();
     [SerializeField] bool lvl0VisState;
 
-    [SerializeField] GameObject[] lvl1Objects;
+    [SerializeField] List<FacingVisGroup> lvl1VisGroup = new List<FacingVisGroup>();
     [SerializeField] bool lvl1VisState;
 
-    [SerializeField] GameObject[] lvl2Objects;
+    [SerializeField] List<FacingVisGroup> lvl2VisGroup = new List<FacingVisGroup>();
     [SerializeField] bool lvl2VisState;
 
 
@@ -38,12 +38,13 @@ public class ElevationController : MonoBehaviour
     {
         ccCam = GameObject.FindObjectOfType<CameraController>();
      
-        CollectMeshes();
+        
     }
 
     void Start()
     {
-        SetElevationLevel(0);
+        CollectFacings();
+        SetElevationLevel(1);
     }
 
     // Update is called once per frame
@@ -88,7 +89,7 @@ public class ElevationController : MonoBehaviour
     //bool is the sate of visibility so we can check its state before forcing a list loop
     //list of meshes
 
-    void CollectMeshes()//Collects all meshes and sorts them into elevation lists based on what their y pos is. The number of lists is used to get how many elevations we have and set them.
+    void CollectFacings()//Collects all meshes and sorts them into elevation lists based on what their y pos is. The number of lists is used to get how many elevations we have and set them.
     {
 
         /*get aall meshes
@@ -100,11 +101,27 @@ public class ElevationController : MonoBehaviour
          */
         //Collect everything
 
-        lvl0Objects = GameObject.FindGameObjectsWithTag("Level0");
-        
-        lvl1Objects = GameObject.FindGameObjectsWithTag("Level1");
-
-        lvl2Objects = GameObject.FindGameObjectsWithTag("Level2");
+        //Collect all facings. For each one, sort them into floors based on their floor method.
+        var allFacings = GameObject.FindObjectsOfType<FacingVisGroup>();
+        foreach (FacingVisGroup visGroup in allFacings)
+        {
+            int floorValue = visGroup.GetFloorValue();
+            switch (floorValue)
+            {
+                case 0:
+                    lvl0VisGroup.Add(visGroup);
+                    break;
+                case 1:
+                    lvl1VisGroup.Add(visGroup);
+                    break;
+                case 2:
+                    lvl2VisGroup.Add(visGroup);
+                    break;
+                default:
+                    lvl0VisGroup.Add(visGroup);
+                    break;
+            }
+        }
         
     }
 
@@ -178,24 +195,23 @@ public class ElevationController : MonoBehaviour
     }
     void ToggleElevationVis(int level, bool state)
     {
-        GameObject[] arrayToUse = new GameObject[0];
+        List<FacingVisGroup> listToUse = new List<FacingVisGroup>();
        
         switch (level)
         {
             case 0:
-                arrayToUse = lvl0Objects;
-                
+                listToUse = lvl0VisGroup;
                 break;
             case 1:
-                arrayToUse = lvl1Objects;
+                listToUse = lvl1VisGroup;
                 break;
             case 2:
-                arrayToUse = lvl2Objects;
+                listToUse = lvl2VisGroup;
                 break;
         }
-        foreach(GameObject go in arrayToUse)
+        foreach(FacingVisGroup visGroup in listToUse)
         {
-            go.GetComponent<LevelKitBase>().ToggleVis(state, false);
+            visGroup.ToggleVis(true);
         }
     }
 }
