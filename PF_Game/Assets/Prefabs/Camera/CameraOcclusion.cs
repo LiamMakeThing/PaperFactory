@@ -138,7 +138,7 @@ public class CameraOcclusion : MonoBehaviour
                 if (!curOverlapItems.Contains(curKitAsset))
                 {
                     curHidden.Remove(curKitAsset);
-                    curKitAsset.ToggleVis(true, true);
+                    
                 }
             }
         }
@@ -147,7 +147,7 @@ public class CameraOcclusion : MonoBehaviour
             if (!curHidden.Contains(tempKitAsset))
             {
                 curHidden.Add(tempKitAsset);
-                tempKitAsset.ToggleVis(false, true);
+              
             }
         }
 
