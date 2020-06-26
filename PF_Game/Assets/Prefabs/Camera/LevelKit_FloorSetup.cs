@@ -27,7 +27,7 @@ public class LevelKit_FloorSetup : MonoBehaviour
     void UpdateTileSize()
     {
         transform.Find("TileScale").localScale = new Vector3(floorTileSize.x,0.25f,floorTileSize.y);
-        Debug.Log("Resizing");
+        
 
     }
 }

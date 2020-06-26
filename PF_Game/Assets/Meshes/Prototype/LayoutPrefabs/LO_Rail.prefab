@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541568496760649768}
   m_Layer: 0
-  m_Name: Bottom
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSnapSize: 0.5
   rotSnapSize: 90
+  snapRotEnabled: 0
 --- !u!114 &6783553427276148067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,9 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
-  bottomSlice: {fileID: 0}
-  hasSlices: 0
-  toggleVisSpeed: 10
+  baseSlice: {fileID: 0}
+  floorSlice: {fileID: 0}
+  isFloor: 0
 --- !u!1 &5424384849109954051
 GameObject:
   m_ObjectHideFlags: 0

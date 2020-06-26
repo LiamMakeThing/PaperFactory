@@ -29,14 +29,7 @@ public class FacingVisGroup : MonoBehaviour
     {
         CollectChildren();
     }
-    private void Update()
-    {
-        //Temp input.
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ToggleVis(false);
-        }
-    }
+
     void CollectChildren()
     {
         /*find all children with level kit base component

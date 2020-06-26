@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541568496760649768}
   m_Layer: 0
-  m_Name: Bottom
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,6 +222,7 @@ Transform:
   - {fileID: 8252004250761696550}
   - {fileID: 7414936240297153447}
   - {fileID: 4137455890942464398}
+  - {fileID: 7385716695174126582}
   m_Father: {fileID: 3832483356504552867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -674,7 +675,6 @@ Transform:
   m_Children:
   - {fileID: 1541568496760649768}
   - {fileID: 6890776370727882633}
-  - {fileID: 7385716695174126582}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSnapSize: 0.5
   rotSnapSize: 90
+  snapRotEnabled: 0
 --- !u!114 &6783553427276148067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,9 +706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
-  bottomSlice: {fileID: 0}
-  hasSlices: 0
-  toggleVisSpeed: 10
+  baseSlice: {fileID: 0}
+  floorSlice: {fileID: 0}
+  isFloor: 0
 --- !u!1 &4686871881134082270
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +720,6 @@ GameObject:
   - component: {fileID: 7385716695174126582}
   - component: {fileID: 7096929327071804022}
   - component: {fileID: 3240547253780138956}
-  - component: {fileID: 7766410955098635161}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -734,12 +734,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4686871881134082270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 0.125, z: 1}
   m_Children: []
-  m_Father: {fileID: 3832483356504552867}
-  m_RootOrder: 2
+  m_Father: {fileID: 1541568496760649768}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7096929327071804022
 MeshFilter:
@@ -787,19 +787,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &7766410955098635161
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4686871881134082270}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5267597987569954616
 GameObject:
   m_ObjectHideFlags: 0

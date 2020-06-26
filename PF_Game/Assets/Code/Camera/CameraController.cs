@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
     Vector3 rotationSmoothVelocity;
     [SerializeField]float camFollowDist;
 
-    CameraOcclusion camOcclusion;
+    
     
 
     Camera mainCam;
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
         camAnchor = this.transform;
         camPivot = transform.Find("CamPivot");
         mainCam = Camera.main;
-        camOcclusion = GetComponent<CameraOcclusion>();
+        
     }
     private void Start()
     {
@@ -55,7 +55,7 @@ public class CameraController : MonoBehaviour
         currentUnit = unit;
         centerOfMassTransform = currentUnit.stratCamTarget;
         //UPDATE Camera Occlusion with new focus.
-        camOcclusion.UpdateViewTarget(unit.transform);
+        
 
 
         

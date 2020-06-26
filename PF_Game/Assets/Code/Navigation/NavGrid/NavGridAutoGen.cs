@@ -37,7 +37,7 @@ public class NavGridAutoGen : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Auto grid Sampling Positions");
+        
         layerMask =~  LayerMask.GetMask("Unit");
         transform.position = RoundPosition(transform.position);
         ClearNodePositions();
