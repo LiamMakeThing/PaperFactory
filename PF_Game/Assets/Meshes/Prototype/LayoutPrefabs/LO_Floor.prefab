@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3236984307801434011}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TileScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,8 +116,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2451227831634695699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.125, z: 0}
-  m_LocalScale: {x: 4, y: 0.25, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 44, y: 0.25, z: 14}
   m_Children:
   - {fileID: 5365825073466006885}
   m_Father: {fileID: 3832483356504552867}
@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: -2159539460876592340}
   - component: {fileID: 699316827849076543}
   - component: {fileID: 2985372011710837012}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LO_Floor
-  m_TagString: Walkable
+  m_TagString: Level1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,9 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSlice: {fileID: 0}
-  bottomSlice: {fileID: 0}
-  hasSlices: 0
-  toggleVisSpeed: 10
+  baseSlice: {fileID: 0}
+  floorSlice: {fileID: 0}
   isFloor: 1
 --- !u!114 &2985372011710837012
 MonoBehaviour:
@@ -201,4 +200,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdc4e1e1e9ad7a498cfca115dad4f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTileSize: {x: 4, y: 4}
+  floorTileSize: {x: 44, y: 14}
