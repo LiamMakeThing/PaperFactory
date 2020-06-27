@@ -21,6 +21,7 @@ public class VisGroupOccDetect : MonoBehaviour
     */
 
     [SerializeField] float occludeCheckFrequency = 0.5f;
+    [SerializeField] VisGroup curDetectedVisGroup;
     [SerializeField] List<VisGroup> currentlyDetectedVisGroups = new List<VisGroup>();
     [SerializeField] List<VisGroup> currentlyHiddenVisGroups = new List<VisGroup>();
     Transform cameraT;
@@ -33,11 +34,13 @@ public class VisGroupOccDetect : MonoBehaviour
     Vector3 cachedCameraPos = Vector3.zero;
     Vector3 hitLocation;
 
+    [SerializeField] bool result;
+
     float camPosDelta;
     float targetPosDelta;
 
     [SerializeField] float deltaDistTolerance;
-    [SerializeField] VisGroup tempVisGroup;
+   
 
     [SerializeField] CurrentUnitHandler unitHandler;
     
@@ -86,68 +89,67 @@ public class VisGroupOccDetect : MonoBehaviour
     }
     void OccludeCheck()
     {
-        /*If somthign is hit and it is not in curDet list add it.
-         * if nothing is hit, empty the curdetected list
-         
-         * 
+      
+        /*raycast camera forward
+         * if hit a visgroup that it not a floor, update the current detected list. Add it to current detected if not there already, add to hidden and hide.
+         * if nothing detected, clear the current detected, clear the hidden and unhide stuff in hidden.
          */ 
-         
-        occludeDir = (cachedCameraPos - cachedTargetPos).normalized;
-        occludeSearchDist =Vector3.Distance(cachedCameraPos,cachedTargetPos);
+        occludeDir = cameraT.forward;
+        occludeSearchDist = 20.0f;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, -occludeDir, out hit, occludeSearchDist))
+        if(Physics.Raycast(cachedCameraPos, occludeDir, out hit))
         {
-            
-
-            if (hit.transform.GetComponentInParent<LevelKitBase>())
+            if (hit.transform.GetComponentInParent<VisGroup>()) 
             {
-                
-                tempVisGroup = hit.transform.GetComponentInParent<VisGroup>();
-                if (!currentlyDetectedVisGroups.Contains(tempVisGroup))
+                VisGroup tempVisGroup = hit.transform.GetComponentInParent<VisGroup>();
+                if (!tempVisGroup.GetOmitState())
                 {
-                    print("unique item founf");
-                    currentlyDetectedVisGroups.Add(tempVisGroup);
-
+                    //visgroup should not be ommitted from occluder and it is not already detected.
+                    curDetectedVisGroup = tempVisGroup;
+                    UpdateCurDetList();
                 }
-                
-
-            }
-
-        }
-        else if(currentlyDetectedVisGroups.Count>0)
-        {
-            print("nothing found");
-            foreach(VisGroup visG in currentlyDetectedVisGroups)
-            {
-                currentlyDetectedVisGroups.Remove(visG);
-            }
-        }
-        
-        /*
-        foreach(VisGroup visG in currentlyHiddenVisGroups)
-        {
-            if (!currentlyDetectedVisGroups.Contains(visG))
-            {
-                currentlyHiddenVisGroups.Remove(visG);
-                visG.ToggleVis(VisGroupTransitionType.Partial);
+                else
+                {
+                    curDetectedVisGroup = null;
+                    ClearDetectedList();
+                    ClearHiddenList();
+                }
             }
             
         }
+        
+        
+    }
+    //TO DO: SPhere cast to collect within a range, then do a compare between what is detected and what is hidden. Similar to previous system.
 
-        if (currentlyDetectedVisGroups.Count > 0)
+    void UpdateCurDetList()//makes sure currently detected are only added once each and that the list is dumped if nothing is currently detected.
+    {
+
+        if (!currentlyDetectedVisGroups.Contains(curDetectedVisGroup))
         {
-            foreach (VisGroup visG in currentlyDetectedVisGroups)
-            {
-                if (!currentlyHiddenVisGroups.Contains(visG))
-                {
-                    currentlyHiddenVisGroups.Add(visG);
-                    visG.ToggleVis(VisGroupTransitionType.Partial);
-                }
-            }
+            currentlyDetectedVisGroups.Add(curDetectedVisGroup);
         }
+      
+        if (!currentlyHiddenVisGroups.Contains(curDetectedVisGroup))
+        {
+            currentlyHiddenVisGroups.Add(curDetectedVisGroup);
+            curDetectedVisGroup.SetVis(false, VisGroupTransitionType.Partial);
+        }
+    }
+    void ClearDetectedList()
+    {
         
-    */
-        
+        currentlyDetectedVisGroups.Clear();
+    }
+
+    void ClearHiddenList()
+    {
+        for (int i = 0; i<currentlyHiddenVisGroups.Count;i++)
+        {
+            currentlyHiddenVisGroups[i].SetVis(true, VisGroupTransitionType.Partial);
+            
+        }
+        currentlyHiddenVisGroups.Clear();
     }
     private void OnDrawGizmosSelected()
     {

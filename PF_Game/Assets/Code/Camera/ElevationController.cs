@@ -211,7 +211,7 @@ public class ElevationController : MonoBehaviour
         }
         foreach(VisGroup visGroup in listToUse)
         {
-            visGroup.ToggleVis(VisGroupTransitionType.Full);
+            visGroup.SetVis(state,VisGroupTransitionType.Full);
         }
     }
 }

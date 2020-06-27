@@ -8,6 +8,7 @@ public class VisGroup : MonoBehaviour
     [SerializeField] int floorValue;
     [SerializeField] bool hasSlices;
     [SerializeField] bool curVisState;
+    [SerializeField] bool omitFromOccluder;
     LevelKitBase[] childrenKitAssets = new LevelKitBase[0];
     List<Transform> topSlices = new List<Transform>();
     List<Transform> baseSlices = new List<Transform>();
@@ -62,9 +63,9 @@ public class VisGroup : MonoBehaviour
             //ToggleVis(VisGroupTransitionType.Full);
         }
     }
-    public void ToggleVis(VisGroupTransitionType transitionType)
+    public void SetVis(bool state,VisGroupTransitionType transitionType)
     {
-        curVisState = !curVisState;//toggle the end state
+        curVisState = state;//toggle the end state
 
         if (curVisState)//depending on the end state, set the starting end ending scale values to lerp between
         {
@@ -136,5 +137,9 @@ public class VisGroup : MonoBehaviour
     public int GetFloorValue()
     {
         return floorValue;
+    }
+    public bool GetOmitState()
+    {
+        return omitFromOccluder;
     }
 }
