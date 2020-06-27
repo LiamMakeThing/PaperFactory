@@ -59,7 +59,7 @@ public class VisGroup : MonoBehaviour
         //Temp input.
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ToggleVis(VisGroupTransitionType.Full);
+            //ToggleVis(VisGroupTransitionType.Full);
         }
     }
     public void ToggleVis(VisGroupTransitionType transitionType)
@@ -132,5 +132,9 @@ public class VisGroup : MonoBehaviour
         {
             kitAsset.ToggleKitAssetVisibility(state);
         }
+    }
+    public int GetFloorValue()
+    {
+        return floorValue;
     }
 }

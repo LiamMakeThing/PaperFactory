@@ -37,7 +37,7 @@ public class CurrentUnitHandler : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Current unit in CurrentUnitHandler not set. Returning null and will probably cause some bad shit in the component that requested it.");
+            //Debug.LogError("Current unit in CurrentUnitHandler not set. Returning null and will probably cause some bad shit in the component that requested it.");
             return null;
         }
     }

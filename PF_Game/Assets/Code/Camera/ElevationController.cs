@@ -19,13 +19,13 @@ public class ElevationController : MonoBehaviour
     //PresetElevations. TODO-Make this repeatable, dynamically scalable and abstracted out from here.
     //TODO: Get this handled and stored before the game runs with the editor with a separate class on the elevation manager. Should find and sort before game runs and provide feedback to level design when placing.
 
-    [SerializeField] List<FacingVisGroup> lvl0VisGroup = new List<FacingVisGroup>();
+    [SerializeField] List<VisGroup> lvl0VisGroup = new List<VisGroup>();
     [SerializeField] bool lvl0VisState;
 
-    [SerializeField] List<FacingVisGroup> lvl1VisGroup = new List<FacingVisGroup>();
+    [SerializeField] List<VisGroup> lvl1VisGroup = new List<VisGroup>();
     [SerializeField] bool lvl1VisState;
 
-    [SerializeField] List<FacingVisGroup> lvl2VisGroup = new List<FacingVisGroup>();
+    [SerializeField] List<VisGroup> lvl2VisGroup = new List<VisGroup>();
     [SerializeField] bool lvl2VisState;
 
 
@@ -102,8 +102,8 @@ public class ElevationController : MonoBehaviour
         //Collect everything
 
         //Collect all facings. For each one, sort them into floors based on their floor method.
-        var allFacings = GameObject.FindObjectsOfType<FacingVisGroup>();
-        foreach (FacingVisGroup visGroup in allFacings)
+        var allFacings = GameObject.FindObjectsOfType<VisGroup>();
+        foreach (VisGroup visGroup in allFacings)
         {
             int floorValue = visGroup.GetFloorValue();
             switch (floorValue)
@@ -195,7 +195,7 @@ public class ElevationController : MonoBehaviour
     }
     void ToggleElevationVis(int level, bool state)
     {
-        List<FacingVisGroup> listToUse = new List<FacingVisGroup>();
+        List<VisGroup> listToUse = new List<VisGroup>();
        
         switch (level)
         {
@@ -209,9 +209,9 @@ public class ElevationController : MonoBehaviour
                 listToUse = lvl2VisGroup;
                 break;
         }
-        foreach(FacingVisGroup visGroup in listToUse)
+        foreach(VisGroup visGroup in listToUse)
         {
-            visGroup.ToggleVis(true);
+            visGroup.ToggleVis(VisGroupTransitionType.Full);
         }
     }
 }
