@@ -13,7 +13,7 @@ public class VisGroup : MonoBehaviour
     List<Transform> topSlices = new List<Transform>();
     List<Transform> baseSlices = new List<Transform>();
     VisGroupTransitionType transition;
-    float lerpSpeed = 6.0f;
+    float lerpSpeed = 15.0f;
     Vector3 scaleA;
     Vector3 scaleB;
 

@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class PathRequester : MonoBehaviour
 {
+    int navLayerMask = 1 << 11;
     [SerializeField] Vector3 startPosition;
     [SerializeField] Vector3 endPosition;
     PathfinderAStar pathFinder;
@@ -22,7 +23,9 @@ public class PathRequester : MonoBehaviour
     [SerializeField] float maxDistanceToSample;
     [SerializeField] float linearDistanceToTarget;
 
-    
+    float navCursorYOffset = 0.25f;
+
+
 
 
 
@@ -58,7 +61,7 @@ public class PathRequester : MonoBehaviour
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 100.0f,navLayerMask))
             {
                 //Vector3 tempPos = hit.transform.position;
                 Vector3 hitLocation = hit.point;
@@ -185,7 +188,7 @@ public class PathRequester : MonoBehaviour
 
     void UpdateDestinationCursor(Vector3 pos, bool activeState)
     {
-        destinationCursor.position = pos;
+        destinationCursor.position = pos + new Vector3(0.0f,navCursorYOffset,0.0f);
         destinationCursor.gameObject.SetActive(activeState);
         isDestinationCursorActive = activeState;
     }

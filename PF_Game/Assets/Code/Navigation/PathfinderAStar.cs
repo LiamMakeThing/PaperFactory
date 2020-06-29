@@ -60,8 +60,13 @@ public class PathfinderAStar : MonoBehaviour
                     {
                         foreach (Vector3 pos in patchPositions)
                         {
-                            Node newNode = GameObject.Instantiate(nodeTemplate, pos, Quaternion.identity, gridRootTransform);
-                            grid.Add(newNode.GetGridPosition(), newNode);
+                            //check to makes sure node not already there.
+                            if (!grid.ContainsKey(pos))
+                            {
+                                Node newNode = GameObject.Instantiate(nodeTemplate, pos, Quaternion.identity, gridRootTransform);
+                                grid.Add(newNode.GetGridPosition(), newNode);
+                            }
+                            
 
                         }
                     }
