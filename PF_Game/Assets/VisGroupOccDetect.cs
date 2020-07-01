@@ -21,39 +21,42 @@ public class VisGroupOccDetect : MonoBehaviour
     */
 
     [SerializeField] float occludeCheckFrequency = 0.5f;
-    [SerializeField] VisGroup curDetectedVisGroup;
-    [SerializeField] List<VisGroup> curDetVisGs = new List<VisGroup>();
-    [SerializeField] List<VisGroup> curHidVisGs = new List<VisGroup>();
+    [SerializeField] VisGroup curDetVisG;
+    [SerializeField] VisGroup curHidVisG;
+    
+    
     Transform cameraT;
-    [SerializeField] Transform targetT;
-    Vector3 occludeDir;
-    float occludeSearchDist;
-    Vector3 targetPos;
     Vector3 curCameraPos;
-    Vector3 cachedTargetPos = Vector3.zero;
     Vector3 cachedCameraPos = Vector3.zero;
-    Vector3 hitLocation;
 
-    [SerializeField] bool result;
+
+    Transform targetT;
+    Vector3 targetPos;
+    Vector3 cachedTargetPos = Vector3.zero;
+
+
 
     float camPosDelta;
+
     float targetPosDelta;
 
     [SerializeField] float deltaDistTolerance;
-   
 
-    [SerializeField] CurrentUnitHandler unitHandler;
+
+    
 
     int environmentLayerMask = 1 << 9;
-    [SerializeField] Collider[] collidersOverlapped = new Collider[0];
-    [SerializeField] float overlapSphereRad = 2.0f;
+
+    [SerializeField] bool visGroupFound;
+
+    [SerializeField] float searchDistance;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        unitHandler = GameObject.FindObjectOfType<CurrentUnitHandler>();
+        
         cameraT = Camera.main.transform;
         targetT = GameObject.FindObjectOfType<NavCursor>().transform;
         
@@ -88,138 +91,42 @@ public class VisGroupOccDetect : MonoBehaviour
     }
     void OccludeCheck()
     {
+        //get distance and direction
+        Vector3 heading = cachedTargetPos - cachedCameraPos;
+        searchDistance = heading.magnitude;
+        Vector3 dirToCursor = heading / searchDistance;
 
-        collidersOverlapped = Physics.OverlapSphere(targetPos, overlapSphereRad, environmentLayerMask);
 
-        if (collidersOverlapped.Length>0)
+        Ray ray = new Ray(cachedCameraPos, dirToCursor);
+        RaycastHit hit;
+        //Racyast. Make sure cursor is actually behind visgroup to fire, otherwsise it should stay visible.
+        visGroupFound = Physics.Raycast(ray, out hit, searchDistance, environmentLayerMask);
+
+
+        if (visGroupFound)
         {
-            print("env found");
-            //Clear detected.
-            
-
-            //get the visgroups found
-            //check to make sure they are not in the curDetList. If no, add them
-            CollectVisGroups();
-
-            //ShowItemsNoLongerDetected();
-            //* * check to see what is in the in the curHidList that is not in the curDetList. If anything, remove them and show them
-
-            HideItemsCurDetected();
-             //check to see what is in the curDetList that is not in the curHidList. If anything, add them and hide them.
-             
-            
+            curDetVisG = hit.transform.GetComponentInParent<VisGroup>();
+            if (curDetVisG != curHidVisG)
+            {
+                if (curHidVisG)
+                {
+                    curHidVisG.SetVis(true, VisGroupTransitionType.Partial);
+                }
+                curDetVisG.SetVis(false,VisGroupTransitionType.Partial);
+                curHidVisG = curDetVisG;
+            }
         }
         else
         {
-            ClearCurDetList();
-            print("nothing");
-            //clear the curHidList and show everthing in it.
-            ShowItems();
-            //ShowItemsNoLongerDetected();
-        }
-        
-        
-    }
-    void ClearCurDetList()
-    {
-        curDetVisGs = new List<VisGroup>();
-    }
-    
-
-    void CollectVisGroups()
-    {
-        //find the parent visgroup
-        //check to see if it exists in list already
-        //Add it
-        ClearCurDetList();
-        foreach (Collider c in collidersOverlapped)
-        {
-            //check to see if it is further from camera than destination.
-            float distToCollider = Vector3.Distance(cachedCameraPos,c.transform.position);
-            float distToTarget = Vector3.Distance(cachedCameraPos, cachedTargetPos);
-            if (distToCollider < distToTarget)
+            if (curHidVisG)
             {
-                if (c.transform.GetComponentInParent<VisGroup>())
-                {
-                    VisGroup curVisG = c.transform.GetComponentInParent<VisGroup>();
-
-                    if (!curDetVisGs.Contains(curVisG))
-                    {
-                        curDetVisGs.Add(curVisG);
-                    }
-                }
-            }
-            
-            
-        }
-    }
-
-    void ShowItemsNoLongerDetected()
-    {
-        //what is hidden that doesnt need to be anymore.
-        int numHidden = curHidVisGs.Count;
-   
-        if (numHidden>0)
-        {
-            for (int i = 0; i<numHidden;i++)
-            {
-                if (curHidVisGs[i])
-                {
-
-
-                    VisGroup curVisG = curHidVisGs[i];
-                    if (!curDetVisGs.Contains(curVisG) && curDetVisGs.Count > 0)
-                    {
-                        curHidVisGs.Remove(curVisG);
-                        //show
-                        curVisG.SetVis(true, VisGroupTransitionType.Partial);
-                    }
-                }
+                curHidVisG.SetVis(true, VisGroupTransitionType.Partial);
+                curHidVisG = null;
             }
         }
+        //Collect what is currently detected.
 
-    }
-    void HideItemsCurDetected()
-    {
-        int numDetected = curDetVisGs.Count;
-        if (numDetected > 0)
-        {
-            for(int i = 0; i < numDetected; i++)
-            {
-                VisGroup curVisG = curDetVisGs[i];
-                if (!curHidVisGs.Contains(curVisG))
-                {
-                    curHidVisGs.Add(curVisG);
-                    //hide
-                    curVisG.SetVis(false, VisGroupTransitionType.Partial);
-                }
-            }
-        }
-    }
+    }   
+  
 
-    void ShowItems()
-    {
-        if(curDetVisGs.Count == 0)
-        {
-            if (curHidVisGs.Count > 0)
-            {
-                for (int i = 0; i<curHidVisGs.Count;i++)
-                {
-                    VisGroup curVisG = curHidVisGs[i];
-                    curVisG.SetVis(true, VisGroupTransitionType.Partial);
-                    curHidVisGs.Remove(curVisG);
-                }
-                
-            }
-        }
-    }
-    private void OnDrawGizmosSelected()
-    {
-
-        //Gizmos.DrawRay(cachedCameraPos, occludeDir);
-        //Gizmos.DrawLine(cachedCameraPos, cachedTargetPos);
-        Gizmos.DrawWireSphere(targetPos, overlapSphereRad);
-        
-        
-    }
 }
