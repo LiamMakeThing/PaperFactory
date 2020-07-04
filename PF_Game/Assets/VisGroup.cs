@@ -99,7 +99,9 @@ public class VisGroup : MonoBehaviour
         {
             if (hasSlices)
             {
+                
                 yield return StartCoroutine("ScaleSlice");
+
             }
             yield return null;
         }

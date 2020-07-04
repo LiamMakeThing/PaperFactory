@@ -31,9 +31,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] float rotationSmoothTime = 0.12f;
     Vector3 rotationSmoothVelocity;
     [SerializeField]float camFollowDist;
+    [SerializeField] bool isCamMoving;
+    Vector3 moveDestination;
 
-    
-    
 
     Camera mainCam;
     private void Awake()
@@ -43,11 +43,7 @@ public class CameraController : MonoBehaviour
         mainCam = Camera.main;
         
     }
-    private void Start()
-    {
-        
-    }
-   
+
 //Leave out the PoV mode for now.
 
     public void CenterCamOnUnit(Unit unit)
@@ -60,13 +56,19 @@ public class CameraController : MonoBehaviour
 
         
         //camAnchor.SetParent(centerOfMassTransform);
-        Vector3 destination = centerOfMassTransform.position;
+        //Vector3 destination = centerOfMassTransform.position;
         //NEED TO USE A STRING INVOKE SO WE CAN INTERRUPT IT. 
 
 
         StopCoroutine("MoveCamera");
-        object[] parameters = new object[2] { destination,travelSpeedUnitFocus};
-        StartCoroutine("MoveCamera",parameters);
+
+        object[] parameters = new object[1] {travelSpeedUnitFocus};
+        moveDestination = centerOfMassTransform.position;
+        if (!isCamMoving)
+        {
+            StartCoroutine("MoveCamera", parameters);
+        }
+        
         //transform.position = centerOfMassTransform.position;
 
     }
@@ -145,8 +147,8 @@ public class CameraController : MonoBehaviour
     IEnumerator MoveCamera (object[] parameters)//only takes in vector3 position currently. Can use dotprodcut and transform forward later to get direction matching.
     {
         
-        Vector3 moveDestination = (Vector3)parameters[0];
-        float moveSpeed = (float)parameters[1];
+        
+        float moveSpeed = (float)parameters[0];
         float timeCount = 0.0f;
 
         //will keep looping until distance is less than tolerance
@@ -155,12 +157,15 @@ public class CameraController : MonoBehaviour
 
         while (distanceToDestination > distanceTolerance)
         {
+            isCamMoving = true;
+
             distanceToDestination = Vector3.Distance(camAnchor.position, moveDestination);
             camAnchor.position = Vector3.Slerp(camAnchor.position, moveDestination, timeCount);
 
             timeCount = timeCount + Time.deltaTime * moveSpeed;
             yield return new WaitForSeconds(0.01f);
         }
+        isCamMoving = false;
         
         
         
@@ -169,11 +174,18 @@ public class CameraController : MonoBehaviour
     public void UpdateElevationLevel(int level, float elevationStep)
     {
 
+
+        //if camera is already moving, just update the end destination. Don't stop the coroutine.
         float yPos = level * elevationStep;
-        Vector3 destination = new Vector3(transform.position.x, yPos, transform.position.z);
+
+        moveDestination = new Vector3(moveDestination.x, yPos, moveDestination.z);
         
-        object[] parameters = new object[2] { destination,travelSpeedElevationChange };
-        StopCoroutine("MoveCamera");
-        StartCoroutine("MoveCamera", parameters);
+        object[] parameters = new object[1] {travelSpeedElevationChange };
+        if (!isCamMoving)
+        {
+            StartCoroutine("MoveCamera", parameters);
+        }
+        //StopCoroutine("MoveCamera");
+        //StartCoroutine("MoveCamera", parameters);
     }
 }

@@ -21,11 +21,13 @@ public class CurrentUnitHandler : MonoBehaviour
 
     CameraController ccCam;
     GameStateHandler gameStateHandler;
+    ElevationController elevationController;
 
     private void Awake()
     {
         ccCam = GameObject.FindObjectOfType<CameraController>();
         gameStateHandler = GameObject.FindObjectOfType<GameStateHandler>();
+        elevationController = GameObject.FindObjectOfType<ElevationController>();
     }
 
 
@@ -49,7 +51,18 @@ public class CurrentUnitHandler : MonoBehaviour
             
             
             ccCam.CenterCamOnUnit(currentlySelectedUnit);
-            //ccCam.CenterCamOnUnit(currentlySelectedUnit, CameraTransitionType.SmoothLerp, CameraTransformFilter.PositionAndRotation,true);
+
+            //update elevation controller
+            int curUnitFloor = elevationController.GetLevelFromYPos(currentlySelectedUnit.transform.position.y);
+            int curElevationLevel = elevationController.GetElevationLevel();
+            if (curElevationLevel != curUnitFloor)
+            {
+
+                elevationController.SetElevationLevel(curUnitFloor);
+            }
+            
+            
+
 
         }
     }

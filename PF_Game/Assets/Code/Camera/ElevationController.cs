@@ -44,7 +44,8 @@ public class ElevationController : MonoBehaviour
     void Start()
     {
         CollectFacings();
-        SetElevationLevel(1);
+        
+
     }
 
     // Update is called once per frame
