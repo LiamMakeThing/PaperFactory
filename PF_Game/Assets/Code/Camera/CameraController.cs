@@ -60,7 +60,7 @@ public class CameraController : MonoBehaviour
         //NEED TO USE A STRING INVOKE SO WE CAN INTERRUPT IT. 
 
 
-        StopCoroutine("MoveCamera");
+        //StopCoroutine("MoveCamera");
 
         object[] parameters = new object[1] {travelSpeedUnitFocus};
         moveDestination = centerOfMassTransform.position;

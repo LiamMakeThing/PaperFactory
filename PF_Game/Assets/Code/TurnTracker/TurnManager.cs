@@ -13,18 +13,22 @@ public class TurnManager : MonoBehaviour
     int currentRoundIndex;
 
     CurrentUnitHandler unitHandler;
+
+    //ActiveTurnUnit
+    [SerializeField] Unit currentlyFocusedUnit;
+    //This are different. You can focus on any unit, assuming it is the players turn. The only unit who can take action however is the activeturnunit.
     
 
     private void Awake()
     {
         unitHandler = GetComponent<CurrentUnitHandler>();
-        
+        CollectUnits();
     }
 
 
     private void Start()
     {
-        CollectUnits();
+        UpdateCurrentlyFocusedUnit(unitsByInit[0]);
     }
 
     void CollectUnits()
@@ -35,7 +39,7 @@ public class TurnManager : MonoBehaviour
         unitsByInit = new List<Unit>(allUnits);
         unitsByInit.Sort(SortUnitsByInitiativeFunc);
 
-        SetCurrentUnit();
+        
 
         
     }
@@ -44,11 +48,20 @@ public class TurnManager : MonoBehaviour
         //INPUT Hit enter and turn ends. 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if(turnFaction == Faction.Player)
-            {
-                Debug.Log("Player ended their turn");
-                AdvanceTurn();
-            }
+            UserInputAdvanceTurn();
+        }
+    }
+
+    public List<Unit> GetInitiativeSortedUnits()
+    {
+        return unitsByInit;
+    }
+
+    public void UserInputAdvanceTurn()
+    {
+        if (turnFaction == Faction.Player)
+        {
+            AdvanceTurn();
         }
     }
     void AdvanceTurn()
@@ -63,57 +76,33 @@ public class TurnManager : MonoBehaviour
         {
             currentTurnIndex++;
         }
-        SetCurrentUnit();
-        
+ 
+            
     }
 
-    void SetCurrentUnit()
+   public void UpdateCurrentlyFocusedUnit(Unit newFocusUnit)
     {
-        Unit currentUnit = unitsByInit[currentTurnIndex];
-        
-        unitHandler.SetCurrentUnit(currentUnit);
-        Faction curFaction = currentUnit.GetFaction();
-        switch (curFaction)
+        if (currentlyFocusedUnit != newFocusUnit||currentlyFocusedUnit==null)
         {
-            case Faction.Player:
-                
-                break;
-            case Faction.Enemy:
-                
-                StartCoroutine(BeginEnemyTurn(currentUnit));
-                break;
-            case Faction.Ally:
-                
-                break;
-            default:
-                break;
+            currentlyFocusedUnit = newFocusUnit;
+            unitHandler.SetCurrentlyFocusedUnit(currentlyFocusedUnit);
         }
+    }
         
 
 
-    }
+    
 
-    IEnumerator BeginEnemyTurn(Unit currentUnit)
-    {
-        AICore curEnemy = currentUnit.GetComponent<AICore>();
-        yield return StartCoroutine(EnemyTurn(curEnemy));
-        //Enemy turn done, advancing turn
-        AdvanceTurn();
-    }
-    IEnumerator EnemyTurn(AICore curEnemy)
-    {
-        curEnemy.TakeTurn();
-        yield return new WaitForSeconds(2.0f);
-    }
+
     private int SortUnitsByInitiativeFunc(Unit unitA, Unit unitB)
     {
         int initA = unitA.GetInitiative();
         int initB = unitB.GetInitiative();
-        if (initA<initB)
+        if (initA>initB)
         {
             return 1;
         }
-        else if (initA > initB)
+        else if (initA < initB)
         {
             return -1;
         }
@@ -123,5 +112,7 @@ public class TurnManager : MonoBehaviour
         }
         
     }
+
+
 
 }

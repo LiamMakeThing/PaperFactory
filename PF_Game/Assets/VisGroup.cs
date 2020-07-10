@@ -121,7 +121,7 @@ public class VisGroup : MonoBehaviour
             lerpAlpha = Mathf.Ceil(lerpAlpha);
             lerpAlpha = lerpAlpha / 10.0f;
             */
-            Debug.Log(lerpAlpha.ToString());
+            
             foreach (Transform T in topSlices)
             {
                 T.localScale = Vector3.Lerp(scaleA, scaleB, lerpAlpha);

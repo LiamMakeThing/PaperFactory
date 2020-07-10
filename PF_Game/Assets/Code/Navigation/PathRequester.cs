@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class PathRequester : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class PathRequester : MonoBehaviour
 
     void Update()
     {
-        currentUnit = unitHandler.GetCurrentUnit();
+        currentUnit = unitHandler.GetCurrentlyActiveTurnUnit();
         
         //only do this if it is the players turn
         if (currentUnit.GetFaction() == Faction.Player)
@@ -59,6 +60,10 @@ public class PathRequester : MonoBehaviour
             startPosition = currentUnit.transform.position;
             maxDistanceToSample = currentUnit.GetAvailableAP() + 2.0f;
 
+            if (EventSystem.current.IsPointerOverGameObject())//Check to make sure we are not over a UI element. 
+            {
+                return;
+            }
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f,navLayerMask))

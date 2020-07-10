@@ -40,7 +40,7 @@ public class UnitSelector : MonoBehaviour
                         {
 
                             currentUnit = tempUnit;
-                            unitHandler.SetCurrentUnit(currentUnit);
+                            unitHandler.SetCurrentlyFocusedUnit(currentUnit);
                         }
                     }
                     

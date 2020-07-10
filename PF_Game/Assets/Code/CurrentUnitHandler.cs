@@ -17,7 +17,8 @@ public class CurrentUnitHandler : MonoBehaviour
 
 
     [Header("Defaults")]
-    [SerializeField] Unit currentlySelectedUnit;
+    [SerializeField] Unit currentlyFocusedUnit;
+    [SerializeField] Unit currentlyActiveTurnUnit;
 
     CameraController ccCam;
     GameStateHandler gameStateHandler;
@@ -31,11 +32,11 @@ public class CurrentUnitHandler : MonoBehaviour
     }
 
 
-    public Unit GetCurrentUnit()
+    public Unit GetCurrentlyFocusedUnit()
     {
-        if (currentlySelectedUnit != null)
+        if (currentlyFocusedUnit != null)
         {
-            return currentlySelectedUnit;
+            return currentlyFocusedUnit;
         }
         else
         {
@@ -43,17 +44,35 @@ public class CurrentUnitHandler : MonoBehaviour
             return null;
         }
     }
-    public void SetCurrentUnit(Unit unit)
+    public Unit GetCurrentlyActiveTurnUnit()
     {
-        if (currentlySelectedUnit != unit)
+        if (currentlyActiveTurnUnit != null)
         {
-            currentlySelectedUnit = unit;
+            return currentlyActiveTurnUnit;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public void SetCurrentlyActiveTurnUnit(Unit curTurnUnit)
+    {
+        if (currentlyActiveTurnUnit != curTurnUnit)
+        {
+            currentlyActiveTurnUnit = curTurnUnit;
+        }
+    }
+    public void SetCurrentlyFocusedUnit(Unit unit)
+    {
+        if (currentlyFocusedUnit != unit)
+        {
+            currentlyFocusedUnit = unit;
             
             
-            ccCam.CenterCamOnUnit(currentlySelectedUnit);
+            ccCam.CenterCamOnUnit(currentlyFocusedUnit);
 
             //update elevation controller
-            int curUnitFloor = elevationController.GetLevelFromYPos(currentlySelectedUnit.transform.position.y);
+            int curUnitFloor = elevationController.GetLevelFromYPos(currentlyFocusedUnit.transform.position.y);
             int curElevationLevel = elevationController.GetElevationLevel();
             if (curElevationLevel != curUnitFloor)
             {
