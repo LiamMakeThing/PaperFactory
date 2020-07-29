@@ -12,9 +12,6 @@ using UnityEngine;
 public class CurrentUnitHandler : MonoBehaviour
 {
     [Header("CurrentUnit")]
-    
-    
-
 
     [Header("Defaults")]
     [SerializeField] Unit currentlyFocusedUnit;
@@ -61,6 +58,7 @@ public class CurrentUnitHandler : MonoBehaviour
         {
             currentlyActiveTurnUnit = curTurnUnit;
         }
+        //UPDATE UNIT CAROUSEL-TURNORDER (Move cards down/carousel)
     }
     public void SetCurrentlyFocusedUnit(Unit unit)
     {
@@ -79,10 +77,7 @@ public class CurrentUnitHandler : MonoBehaviour
 
                 elevationController.SetElevationLevel(curUnitFloor);
             }
-            
-            
-
-
+            //UPDATE UNIT CAROUSEL-FOCUS (highlight or make larger the current focus one without moving them)
         }
     }
 

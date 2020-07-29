@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitRef: {fileID: 0}
   initiativeLabel: {fileID: 0}
+  btnRectTransform: {fileID: 8376838571464324075}
 --- !u!1 &6748433767312614445
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ GameObject:
   - component: {fileID: 8376838571464324073}
   - component: {fileID: 8376838571464324072}
   m_Layer: 5
-  m_Name: Btn_Unit01
+  m_Name: Btn_Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +441,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &8376838571464324072
 MonoBehaviour:
   m_ObjectHideFlags: 0

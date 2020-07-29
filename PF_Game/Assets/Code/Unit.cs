@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
     public Transform stratCamTarget;
     [SerializeField] Faction faction;
     [SerializeField] int initiative;
+    [SerializeField] int unitOrderNum;
     [SerializeField] int maxAP;
     [SerializeField] int availableAP;
     [SerializeField] string unitName;
@@ -21,7 +22,14 @@ public class Unit : MonoBehaviour
         stratCamTarget = transform.Find("stratCamTarget");
         ResetAP();
     }
-
+    public void SetOrderNum(int order)
+    {
+        unitOrderNum = order;
+    }
+    public int GetOrderNum()
+    {
+        return unitOrderNum;
+    }
     public Faction GetFaction()
     {
         return faction;

@@ -6,8 +6,10 @@ using TMPro;
 public class UI_UnitTile : MonoBehaviour
 {
     [SerializeField] Unit unitRef;
+    
     [SerializeField] TextMeshProUGUI initiativeLabel;
     TurnManager turnMananger;
+    [SerializeField] RectTransform btnRectTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,8 @@ public class UI_UnitTile : MonoBehaviour
     private void Awake()
     {
        initiativeLabel = GetComponentInChildren<TextMeshProUGUI>();
-        turnMananger = GameObject.FindObjectOfType<TurnManager>();
+       turnMananger = GameObject.FindObjectOfType<TurnManager>();
+       
 
     }
     public void SetUnitReference(Unit unit)
@@ -34,5 +37,15 @@ public class UI_UnitTile : MonoBehaviour
     public void UserInputSetUnitFocus()
     {
         turnMananger.UpdateCurrentlyFocusedUnit(unitRef);
+    }
+    public void SetFocus(bool state)
+    {
+        if (state)
+        {
+            btnRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100.0f);
+        }else if(state == false)
+        {
+            btnRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75.0f);
+        }
     }
 }
